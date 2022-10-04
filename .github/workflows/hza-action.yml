@@ -1,12 +1,11 @@
 name: Run notebook file
 
 on:
-  workflow_dispatch: {}
   push:
     branches:
     - AddingHZADataAction
     paths:
-    - '**/data-pipeline/hawaii-zoning-data.csv'
+    - '**/data-pipeline/hawaii-zoning-data1.csv'
 
 jobs:
 
