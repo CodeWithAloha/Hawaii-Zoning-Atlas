@@ -4,8 +4,7 @@ on:
   push:
     branches:
     - AddingHZADataAction
-    paths:
-    - '**/data-pipeline/hawaii-zoning-data.csv'
+
 
 jobs:
 
