@@ -1,6 +1,7 @@
 name: Run notebook file
 
 on:
+  workflow_dispatch: {}
   push:
     branches:
     - AddingHZADataAction
