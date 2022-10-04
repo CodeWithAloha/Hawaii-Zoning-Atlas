@@ -5,7 +5,7 @@ on:
     branches:
     - AddingHZADataAction
     paths:
-    - '**/data-pipeline/hawaii-zoning-data1.csv'
+    - '**/data-pipeline/hawaii-zoning-data.csv'
 
 jobs:
 
@@ -36,9 +36,12 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: run file
       run: |
-        python hzadata.py
+        python ./data-pipeline/hzadata.py
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
     - name: Archive build artifacts
       uses: actions/upload-artifact@v3
       with:
-        name: final.geojson
-        path: ./final.geojson
+        name: final-${{ steps.date.outputs.date }}.geojson
+        path: ./data-pipeline/final.geojson
