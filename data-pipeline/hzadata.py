@@ -57,7 +57,7 @@ def read_zoning_file(filepath):
         print(f"Error when reading {filepath}.")
 
 # Folder with all GIS files
-zoning_folder = './gis'
+zoning_folder = './data-pipeline/gis'
 
 # Read the folder to get all filenames (ignore hidden files)
 zoning_files = [x for x in os.listdir(zoning_folder) if x[-5:] == '.gpkg' ]
@@ -70,7 +70,7 @@ combined_df = pd.concat( gdfs ).reset_index(drop=True)
 
 # Read federal-state-land GeoJSON
 fed_state_land = gpd.read_file(
-    './federal-state-singleparts.geojson'
+    './data-pipeline/federal-state-singleparts.geojson'
 ).to_crs(epsg=4326)
 
 
@@ -111,7 +111,7 @@ combined_df.FedStateAcres = combined_df.FedStateAcres.fillna(0)
 combined_df['MunicipalAcres'] = combined_df.ZoneAcres -\
     combined_df.FedStateAcres
 
-spreadsheet_path = './hawaii-zoning-data.csv'
+spreadsheet_path = './data-pipeline/hawaii-zoning-data.csv'
 
 zoning = pd.read_csv(spreadsheet_path, skiprows=1)\
     .loc[ :, 'State': 'Tooltip Notes' ]
@@ -342,10 +342,10 @@ vals_xwalk = {
     .rename(columns=cols_xwalk)
     .replace( vals_xwalk )
     .assign(geometry=lambda df_: df_.geometry.simplify(0.00004))
-    .to_file('./final.geojson', driver='GeoJSON')
+    .to_file('./data-pipeline/final.geojson', driver='GeoJSON')
 )
 
 (final
  .filter([x for x in final.columns if x != 'geometry'])
- .to_csv('./final.csv')
+ .to_csv('./data-pipeline/final.csv')
 )
