@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-        contents: 'read'
         id-token: 'write'
 
     steps:
@@ -39,9 +38,8 @@ jobs:
         poll: False
     - name: Check output location
       run: |
-        ls -R
         ls -R ..
-        ls -R ../..
+        pwd
       working-directory: ${{ RUNNER.temp }}
     - uses: actions/upload-artifact@v3
       if: always()
