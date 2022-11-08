@@ -40,8 +40,8 @@ jobs:
     - name: Check output location
       run: |
         ls -R
-	      ls -R ..
-	      ls -R ../..
+        ls -R ..
+        ls -R ../..
       working-directory: ${{ RUNNER.temp }}
     - uses: actions/upload-artifact@v3
       if: always()
