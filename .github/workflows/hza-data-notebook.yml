@@ -36,6 +36,8 @@ jobs:
         notebook: "./data-pipeline/CombineJurisdictions.ipynb"
         isReport: False
         poll: True
+    - name: Check output location
+      run: ls -R
     - uses: actions/upload-artifact@v3
       if: always()
       with:
