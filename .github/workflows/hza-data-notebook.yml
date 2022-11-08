@@ -1,0 +1,41 @@
+name: Run notebook file
+
+on:
+  push:
+    branches:
+    - AddingHZADataAction
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+        contents: 'read'
+        id-token: 'write'
+
+    steps:
+    - uses: 'actions/checkout@v3'
+
+    - name: Set up Python 3
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+    - uses: yaananth/run-notebook@v2
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "./data-pipeline/CombineJurisdictions.ipynb"
+        isReport: False
+        poll: True
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: output
+        path: ${{ RUNNER.temp }}/nb-runner
+      env:
+        RUNNER: ${{ toJson(runner) }}
