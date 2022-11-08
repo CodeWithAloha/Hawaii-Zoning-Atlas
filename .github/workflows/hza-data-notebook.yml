@@ -35,7 +35,7 @@ jobs:
       with:
         notebook: "./data-pipeline/CombineJurisdictions.ipynb"
         isReport: False
-        poll: True
+        poll: False
     - name: Check output location
       run: ls -R
       working-directory: ${{ RUNNER.temp }}
