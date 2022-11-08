@@ -38,13 +38,11 @@ jobs:
         poll: False
     - name: Check output location
       run: |
-        ls -R ..
         pwd
-      working-directory: ${{ RUNNER.temp }}
     - uses: actions/upload-artifact@v3
       if: always()
       with:
         name: final.geojson
-        path: ../Hawaii-Zoning-Atlas/Hawaii-Zoning-Atlas/data-pipeline/final.geojson
+        path: /home/runner/work/Hawaii-Zoning-Atlas/Hawaii-Zoning-Atlas/data-pipeline/final.geojson
       env:
         RUNNER: ${{ toJson(runner) }}
