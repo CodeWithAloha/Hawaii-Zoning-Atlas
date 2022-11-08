@@ -38,6 +38,7 @@ jobs:
         poll: True
     - name: Check output location
       run: ls -R
+      cwd: ${{ RUNNER.temp }}
     - uses: actions/upload-artifact@v3
       if: always()
       with:
