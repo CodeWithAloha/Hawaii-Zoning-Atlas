@@ -40,6 +40,6 @@ jobs:
       if: always()
       with:
         name: final.geojson
-        path: ${{ RUNNER.temp }}/final.geojson
+        path: ${{ RUNNER.temp }}/nb-runner/final.geojson
       env:
         RUNNER: ${{ toJson(runner) }}
