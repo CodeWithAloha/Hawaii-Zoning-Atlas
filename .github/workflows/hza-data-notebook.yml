@@ -43,6 +43,6 @@ jobs:
       if: always()
       with:
         name: final.geojson
-        path: /home/runner/work/Hawaii-Zoning-Atlas/Hawaii-Zoning-Atlas/data-pipeline/final.geojson
+        path: data-pipeline/final.geojson
       env:
         RUNNER: ${{ toJson(runner) }}
