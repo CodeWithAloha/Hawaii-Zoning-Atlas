@@ -39,7 +39,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       if: always()
       with:
-        name: output
-        path: ${{ RUNNER.temp }}/nb-runner
+        name: final.geojson
+        path: ./data-pipeline/final.geojson
       env:
         RUNNER: ${{ toJson(runner) }}
