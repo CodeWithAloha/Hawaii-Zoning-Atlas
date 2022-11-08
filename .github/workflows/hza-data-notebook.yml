@@ -40,6 +40,6 @@ jobs:
       if: always()
       with:
         name: final.geojson
-        path: ./data-pipeline/final.geojson
+        path: ${{ RUNNER.temp }}/final.geojson
       env:
         RUNNER: ${{ toJson(runner) }}
