@@ -5,6 +5,7 @@ env:
   SPREADSHEET_ID: 1YGt_Y70oy6qc09ZZ7kip9DM2JGtRC2fAHxi6JXOIsSk
 
 on: 
+  push: {}
   workflow_dispatch: {}
   # schedule:
   #   - cron:  '0 10 * * *'
