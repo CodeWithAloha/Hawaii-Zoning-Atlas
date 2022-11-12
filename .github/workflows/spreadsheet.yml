@@ -19,7 +19,7 @@ jobs:
           MAUI_SHEET_ID: '987737350'
           MAUI_FILE_NAME: 'maui.csv'
         run: |
-          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', $SPREADSHEET_ID, $MAUI_SHEET_ID) }}" > "${{ $MAUI_FILE_NAME }}"
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', "$SPREADSHEET_ID", "$MAUI_SHEET_ID") }}" > "${{ $MAUI_FILE_NAME }}"
       # - name: Oahu
       # - name: Big Island
       # - name: Kauai
