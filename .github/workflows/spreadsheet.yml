@@ -19,9 +19,9 @@ jobs:
           MAUI_FILE_NAME: 'maui.csv'
         run: |
           wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', $SPREADSHEET_ID, $MAUI_SHEET_ID) }}" > "${{ $MAUI_FILE_NAME }}"
-      - name: Oahu
-      - name: Big Island
-      - name: Kauai
+      # - name: Oahu
+      # - name: Big Island
+      # - name: Kauai
 
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
