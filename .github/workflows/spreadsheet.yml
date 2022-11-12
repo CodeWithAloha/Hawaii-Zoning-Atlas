@@ -1,0 +1,42 @@
+name: Pull and Validate Spreadsheet Data
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+env:
+  SPREADSHEET_ID: 1YGt_Y70oy6qc09ZZ7kip9DM2JGtRC2fAHxi6JXOIsSk
+
+on: 
+  workflow_dispatch: {}
+  # schedule:
+  #   - cron:  '0 10 * * *'
+jobs:
+  Pull-Spreadsheet-Data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Maui
+        working-directory: ${{ runner.temp }}
+        env: 
+          MAUI_SHEET_ID: '987737350'
+          MAUI_FILE_NAME: 'maui.csv'
+        run: |
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', $SPREADSHEET_ID, $MAUI_SHEET_ID) }}" > "${{ $MAUI_FILE_NAME }}"
+      - name: Oahu
+      - name: Big Island
+      - name: Kauai
+
+      # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      # - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      # - name: Check out repository code
+      #   uses: actions/checkout@v3
+      # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      # - name: List files in the repository
+      #   run: |
+      #     ls ${{ github.workspace }}
+      # - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  # Validate-Spreadsheet-Data:
+  #   runs-on: ubuntu-latest
+
+  # Update-Spreadsheet-Data
+
