@@ -39,10 +39,9 @@ jobs:
     - name: Check output location
       run: |
         pwd
-    - uses: actions/upload-artifact@v3
-      if: always()
+    - name: Commit final.geojson
+      uses: EndBug/add-and-commit@v9
       with:
-        name: final.geojson
-        path: data-pipeline/final.geojson
-      env:
-        RUNNER: ${{ toJson(runner) }}
+        message: 'Add the final.geojson'
+        add: 'final.geojson --force'
+        cwd: './data-pipeline/'
