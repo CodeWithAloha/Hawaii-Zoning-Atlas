@@ -45,4 +45,4 @@ jobs:
       with:
         message: 'Add the final.geojson'
         add: 'final.geojson --force'
-        cwd: './data-pipeline/'
+        cwd: './data/'
