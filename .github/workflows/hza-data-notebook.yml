@@ -37,9 +37,6 @@ jobs:
         notebook: "./data-pipeline/CombineJurisdictions.ipynb"
         isReport: False
         poll: False
-    - name: Check output location
-      run: |
-        pwd
     - name: Verify Changed files
       uses: tj-actions/verify-changed-files@v12
       id: verify-changed-files
