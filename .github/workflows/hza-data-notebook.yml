@@ -37,6 +37,8 @@ jobs:
         notebook: "./data-pipeline/CombineJurisdictions.ipynb"
         isReport: False
         poll: False
+    - name: Move final.geojson to correct folder
+      run: mv ./data-pipeline/final.geojson ./data/final.geojson
     - name: Verify Changed files
       uses: tj-actions/verify-changed-files@v12
       id: verify-changed-files
@@ -52,4 +54,4 @@ jobs:
       with:
         message: 'Add the final.geojson'
         add: 'final.geojson --force'
-        cwd: './data-pipeline/'
+        cwd: './data/'
