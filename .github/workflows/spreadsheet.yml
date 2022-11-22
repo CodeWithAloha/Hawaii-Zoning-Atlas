@@ -9,7 +9,7 @@ on:
   # schedule:
   #   - cron:  '0 10 * * *'
 jobs:
-  Pull-Spreadsheet-Data:
+  Pull-And-Merge-Spreadsheet-Data:
     runs-on: ubuntu-latest
     steps:
       - name: Pulling Maui
@@ -40,23 +40,14 @@ jobs:
           KAUAI_SHEET_NAME: 'kauai.csv'
         run: |
           wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$KAUAI_SHEET_ID') }}" -O $KAUAI_SHEET_NAME
-  Merge-Spreadsheet-Data:
-    runs-on: ubuntu-latest
-    needs: Pull-Spreadsheet-Data
-    steps:
-      - name: Merge CSVs
+      - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
           head -n 1 maui.csv > all.csv && tail -n+2 -q *.csv >> all.csv
-      # - name: Validate CSV
-      #   working-directory: ${{ runner.temp }}
-      #   run: |
-      #     echo "Validating CSV"
-      #     cat all.csv | csvlint
-      - name: Upload CSV
+      - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: all.csv
+          name: hawaii.csv
           path: ${{ runner.temp }}/all.csv
   # Validate-Spreadsheet-Data:
   #   runs-on: ubuntu-latest
