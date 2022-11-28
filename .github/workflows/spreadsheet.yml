@@ -4,10 +4,9 @@ env:
   SPREADSHEET_ID: 1YGt_Y70oy6qc09ZZ7kip9DM2JGtRC2fAHxi6JXOIsSk
 
 on: 
-  push: {}
   workflow_dispatch: {}
-  # schedule:
-  #   - cron:  '0 10 * * *'
+  schedule:
+    - cron:  '0 10 * * *'
 jobs:
   Pull-And-Merge-Spreadsheet-Data:
     runs-on: ubuntu-latest
@@ -43,14 +42,10 @@ jobs:
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
-          head -n 1 maui.csv > all.csv && tail -n+2 -q *.csv >> all.csv
+          head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: hawaii.csv
-          path: ${{ runner.temp }}/all.csv
-  # Validate-Spreadsheet-Data:
-  #   runs-on: ubuntu-latest
-
-  # Update-Spreadsheet-Data
+          name: hawaii-zoning-data.csv
+          path: ${{ runner.temp }}/hawaii-zoning-data.csv
 
