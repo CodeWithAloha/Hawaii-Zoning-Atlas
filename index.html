@@ -51,6 +51,16 @@
 			rel="stylesheet"
 		/>
 
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTZX623WY7"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-ZTZX623WY7');
+		</script>
+
 		<script src="data/demographics.js"></script>
 		<script src="scripts/map.js"></script>
 	</head>
@@ -628,9 +638,9 @@
 				<div id="Overlays">
 					<h2 class="f5 mb1 black-40">Overlays</h2>
 
-					<!-- <label
+					<label
 						class="f5"
-						title="Includes ponds, lakes, oceans, swamps, glaciers, and the area covered by large rivers, streams, and/or canals. Data from TIGER/Line Shapefile, 2010, CT, Current Area Hydrography Shapefile."
+						title="Includes ponds, lakes, oceans, swamps, and the area covered by large rivers, streams, and/or canals. Data from USG National Hydrography Dataset-Hawaii."
 					>
 						<input
 							type="checkbox"
@@ -641,7 +651,7 @@
 						Waterways
 					</label>
 
-					<br /> -->
+					<br />
 
 					<label class="f5" title="">
 						<input
