@@ -1,3 +1,12 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+/* html, body, #map {
+  height: 100%;
+  width: 100vw;
+} */
+
 #sidebar {
   z-index: 999 !important;
   position: absolute;
@@ -8,6 +17,12 @@
   top: 10px;
   left: 10px;
   opacity: 0.95;
+}
+
+@media screen and (max-width: 600px) {
+  #sidebar {
+    display: none;
+  }
 }
 
 

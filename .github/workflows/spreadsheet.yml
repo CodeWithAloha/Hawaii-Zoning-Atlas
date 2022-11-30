@@ -1,0 +1,51 @@
+name: Pull and Validate Spreadsheet Data
+
+env:
+  SPREADSHEET_ID: 1YGt_Y70oy6qc09ZZ7kip9DM2JGtRC2fAHxi6JXOIsSk
+
+on: 
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '0 10 * * *'
+jobs:
+  Pull-And-Merge-Spreadsheet-Data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pulling Maui
+        working-directory: ${{ runner.temp }}
+        env: 
+          MAUI_SHEET_ID: '987737350'
+          MAUI_FILE_NAME: 'maui.csv'
+        run: |
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$MAUI_SHEET_ID') }}" -O $MAUI_FILE_NAME
+      - name: Pulling Honolulu (Oahu)
+        working-directory: ${{ runner.temp }}
+        env: 
+          HONOLULU_SHEET_ID: '448730928'
+          HONOLULU_SHEET_NAME: 'honolulu.csv'
+        run: |
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$HONOLULU_SHEET_ID') }}" -O $HONOLULU_SHEET_NAME
+      - name: Pulling Hawaii (Big Island)
+        working-directory: ${{ runner.temp }}
+        env: 
+          HAWAII_SHEET_ID: '835193382'
+          HAWAII_SHEET_NAME: 'hawaii.csv'
+        run: |
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$HAWAII_SHEET_ID') }}" -O $HAWAII_SHEET_NAME
+      - name: Pulling Kauai
+        working-directory: ${{ runner.temp }}
+        env: 
+          KAUAI_SHEET_ID: '1657052642'
+          KAUAI_SHEET_NAME: 'kauai.csv'
+        run: |
+          wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$KAUAI_SHEET_ID') }}" -O $KAUAI_SHEET_NAME
+      - name: Merge Island CSVs
+        working-directory: ${{ runner.temp }}
+        run: |
+          head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: hawaii-zoning-data.csv
+          path: ${{ runner.temp }}/hawaii-zoning-data.csv
+

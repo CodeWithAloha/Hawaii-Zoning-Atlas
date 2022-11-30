@@ -44,8 +44,8 @@ var loadZones = function (geojson) {
 
 	dataLayer = L.geoJSON(geojson, {
 		attribution:
-			'data by <a href="https://www.desegregatect.org/">Desegregate CT</a>,\
-      map development by <a href="https://ctdata.org">CTData Collaborative</a>',
+			'data by <a href="https://www.codeforhawaii.org/">Kind Volunteers @ Code for Hawaii</a>,\
+      map development by <a href="https://codeforhawaii.org">Code for Hawaii</a>',
 		style: function (feature) {
 			return style(filters, feature)
 		},
@@ -69,7 +69,7 @@ var loadZones = function (geojson) {
 				if (townActive) {
 					// Fit town to center
 					towns.eachLayer(function (l) {
-						if (l.feature.properties.NAME10 === townActive) {
+						if (l.feature.properties.name20 === townActive) {
 							map.fitBounds(l.getBounds())
 							setTimeout(updateUrl, 500)
 						}
@@ -100,7 +100,6 @@ var loadZones = function (geojson) {
 
 	// Turn on federal/state land by default
 	$('input[name="Overlay"][value="fs"]').prop('checked', true)
-	$('input[name="Overlay"][value="transit"]').prop('checked', true)
 
 	// Add selected overlays to the map
 	$('input[name="Overlay"]:checked').each(function (i, el) {
@@ -271,9 +270,9 @@ var addColorPolygonsToLegend = function () {
  */
 var townStyle = function (feature) {
 	return {
-		stroke: feature.properties.NAME10 === townActive ? 5 : 2,
-		color: feature.properties.NAME10 === townActive ? 'yellow' : 'white',
-		opacity: feature.properties.NAME10 === townActive ? 1 : 0.4,
+		stroke: feature.properties.name20 === townActive ? 5 : 2,
+		color: feature.properties.name20 === townActive ? 'yellow' : 'white',
+		opacity: feature.properties.name20 === townActive ? 1 : 0.4,
 		fillOpacity: 0,
 		fillColor: 'rgba(0,0,0,0)',
 	}
@@ -335,8 +334,8 @@ var calculateActiveArea = function () {
 			demographics[townActive].income.toLocaleString() +
 			'<br>HH Income</span><span class="black-50 dib w-third fl tc" title="Black, Indigenous, People of Color">' +
 			'<span class="material-icons v-top" style="font-size:16px">people_alt</span> ' +
-			demographics[townActive].bipoc +
-			'%<br>BIPOC</span><span class="black-50 dib fl ml2 tr" title="Cost-Burdened Households">' +
+			demographics[townActive].nativeHawaiian +
+			'%<br>Native Hawaiian</span><span class="black-50 dib fl ml2 tr" title="Cost-Burdened Households">' +
 			'<span class="material-icons v-top" style="font-size:16px">toll</span> ' +
 			demographics[townActive].burdened +
 			'%<br>Cost-Burdened</span>' +
@@ -388,36 +387,45 @@ var loadTransit = function () {
 }
 
 var loadHydro = function () {
-	$.getJSON('./data/hydro.min.geojson', function (geojson) {
-		var stripes = new L.StripePattern({
-			height: 2,
-			width: 2,
-			weight: 1,
-			spaceWeight: 1,
-			angle: -45,
-			color: '#C6DDFF',
-		})
-		stripes.addTo(map)
+	$.getJSON(
+		'./data/hydro.min.geojson',
+		function (geojson) {
+			var stripes = new L.StripePattern({
+				height: 2,
+				width: 2,
+				weight: 1,
+				spaceWeight: 1,
+				angle: -45,
+				color: '#C6DDFF',
+				spaceColor: '#9cb4dc',
+				opacity: 0.5,
+				spaceOpacity: 0.5,
+			})
+			stripes.addTo(map)
 
-		overlays['hydro'] = L.geoJSON(geojson, {
-			interactive: false,
-			stroke: false,
-			pane: 'overlays',
-			style: {
-				fillOpacity: 1,
-				fillPattern: stripes,
-			},
-		})
-	})
+
+			overlays['hydro'] = L.geoJSON(geojson, {
+				interactive: false,
+				stroke: true,
+				color: '#C6DDFF',
+				weight: 0.5,
+				pane: 'overlays',
+				style: {
+					fillOpacity: 1,
+					fillPattern: stripes,
+				},
+			})
+		}
+	)
 }
 
 var loadSewer = function () {
 	$.getJSON('./data/sewer.min.geojson', function (geojson) {
 		var stripes = new L.StripePattern({
-			height: 4,
-			width: 4,
+			height: 2,
+			width: 2,
 			weight: 1,
-			spaceWeight: 3,
+			spaceWeight: 1,
 			angle: 45,
 			color: '#e8f99d',
 		})
@@ -445,6 +453,7 @@ var loadFederalState = function () {
 			angle: 30,
 			color: '#5cc649',
 		})
+
 		stripes.addTo(map)
 
 		overlays['fs'] = L.geoJSON(geojson, {
@@ -456,6 +465,8 @@ var loadFederalState = function () {
 				fillPattern: stripes,
 			},
 		})
+
+		overlays['fs'].addTo(map)
 	})
 }
 
@@ -468,7 +479,7 @@ var initMap = function () {
 		zoomControl: false,
 		tap: false,
 		maxZoom: 15,
-	}).setView([19.8968, -155.5828], 12)
+	}).setView([20.4162, -157.4015], 9)
 
 	L.control.zoom({ position: 'topright' }).addTo(map)
 
@@ -538,27 +549,27 @@ var initMap = function () {
 	// Add overlays
 	loadTransit()
 	loadHydro()
-	loadSewer()
+	// loadSewer()
 	loadFederalState()
 
 	// Add Esri geocoder
-	var searchControl = L.esri.Geocoding.geosearch({
-		position: 'topright',
-		allowMultipleResults: false,
-		searchBounds: [
-			[40.98, -73.74],
-			[42.04, -71.78],
-		],
-	}).addTo(map)
+	// var searchControl = L.esri.Geocoding.geosearch({
+	// 	position: 'topright',
+	// 	allowMultipleResults: false,
+	// 	searchBounds: [
+	// 		[40.98, -73.74],
+	// 		[42.04, -71.78],
+	// 	],
+	// }).addTo(map)
 
-	var results = L.layerGroup().addTo(map)
+	// var results = L.layerGroup().addTo(map)
 
-	searchControl.on('results', function (data) {
-		results.clearLayers()
-		for (var i = data.results.length - 1; i >= 0; i--) {
-			results.addLayer(L.marker(data.results[i].latlng))
-		}
-	})
+	// searchControl.on('results', function (data) {
+	// 	results.clearLayers()
+	// 	for (var i = data.results.length - 1; i >= 0; i--) {
+	// 		results.addLayer(L.marker(data.results[i].latlng))
+	// 	}
+	// })
 
 	// Start tour
 	var driver = new Driver({
@@ -580,10 +591,10 @@ var initMap = function () {
 			popover: {
 				title: 'What are the Zoning Districts?',
 				description:
-					'We have put the zoning districts in each town into one of three categories: \
-          <ul><li><strong>Primarily Residential</strong>: Districts where housing is the main use. They may also include things you might find in residential neighborhoods, like schools and churches.  We included farming-residential districts in rural towns in this category.</li>\
+					'We have put the zoning districts in each county into one of three categories: \
+          <ul><li><strong>Primarily Residential</strong>: Districts where housing is the main use. They may also include things you might find in residential neighborhoods, like schools and churches.  We included agricultural-residential districts in this category.</li>\
           <li> <strong>Mixed with Residential</strong>: Districts where housing and retail, office, or other commercial uses mix together. They are typically districts around our “main streets” or in areas meant to be developed flexibly.</li>\
-          <li> <strong>Nonresidential</strong>: Districts where housing is not allowed to be an independent use. However, some nonresidential districts allow accessory dwelling units, like an apartment for a night watchman in a factory setting.</li></ul>',
+          <li> <strong>Nonresidential</strong>: Districts where housing is not allowed to be an independent use. However, some nonresidential districts allow caretaker units, like an apartment for a night watchman in a factory setting.</li></ul>',
 				position: 'right',
 			},
 		},
@@ -606,10 +617,10 @@ var initMap = function () {
 		{
 			element: '#map',
 			popover: {
-				title: 'Click the Map to Learn About Your Town',
+				title: 'Click the Map to Learn About Your County',
 				description:
 					'Click the map for the popup to appear on top of the map. It will tell you what percent of land satisfies your selection criteria, as well as\
-          median household income, the percent of people cost-burdened (spending 30% or more of their income on housing), and what percent of the population identifies as Black, Indigenous, or as a person of color (BIPOC).',
+          median household income, the percent of people cost-burdened (spending 30% or more of their income on housing), and what percent of the population identifies as Native Hawaiian.',
 				position: 'mid-center',
 			},
 			onNext: function () {
@@ -623,9 +634,8 @@ var initMap = function () {
 			popover: {
 				title: 'Explore the Overlays',
 				description:
-					'You can toggle between the <strong>Transit and Waterways \
-          Overlays</strong> to visualize areas within a half mile of passenger rail and \
-          CT<i>fastrak</i>, as well as bodies of water within the state.',
+					'You can toggle between the <strong>Transit and Public Lands \
+          Overlays</strong> to visualize areas within a half mile of passenger rail (<i>HART</i>), as well as land owned by the Federal/State government entities.',
 				position: 'right',
 			},
 		},
