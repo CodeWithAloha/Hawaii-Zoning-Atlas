@@ -96,8 +96,8 @@ sequenceDiagram
 Once the data is ready for processing, another set of actions will perform the following tasks:
 * Run the data through the `CombineJurisdiction` notebook
 * Minimize the `final.geojson` file
-* Commit the final.geojson file to the repository 
-  * The name of the final.geojson should include a timestamp and a reference to the original data used to generate it. This will allow us to rollback to different versions if needed.
+* Commit the `final.geojson` file to the repository 
+  * The name of the `final.geojson` should include a timestamp and a reference to the original data used to generate it. This will allow us to rollback to different versions if needed.
 
 ```mermaid
 sequenceDiagram
