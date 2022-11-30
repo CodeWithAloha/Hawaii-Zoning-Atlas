@@ -43,7 +43,7 @@ Zoning laws, adopted by thousands of local governments across the country, dicta
 
 ### New Developers Start Here
 
-The code can be seen live at [hawaiizoningatlas.com](https://hawaiizoningatlas.com/#9/20.4162/-157.4015)
+The code can be seen live at [hawaiizoningatlas.com](https://hawaiizoningatlas.com)
 
 The process of moving the data from the starting point (the datasheet) to the final destination (the website) involves a series of processes that we are hoping to automate. 
 #### Data Pipeline
