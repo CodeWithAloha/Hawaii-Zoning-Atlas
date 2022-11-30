@@ -60,7 +60,7 @@ After the data sheet is populated, it is then exported to a csv where the follow
   * Validation is run on the data
   * The final csv is given the name "hawaii-zoning-data.csv"
 
-The hawaii-zoning-data.csv file should then be placed into the data-pipeline folder.
+The `hawaii-zoning-data.csv` file should then be placed into the data-pipeline folder.
 
 In the data-pipeline folder there is a "gis" folder that holds the output of processing various shape files. These shape files come from the maps given in the [HZA Research Guide](https://github.com/CodeforHawaii/Hawaii-Zoning-Atlas/wiki/Research-Guide). The method of processing the shape files is outlined in [How to Make a Zoning Atlas](https://www.zoningatlas.org/how).
 
