@@ -494,7 +494,7 @@ var loadKauai = function () {
 
 
 			overlays['kauai'] = L.geoJSON(geojson, {
-				interactive: false,
+				interactive: true,
 				stroke: false,
 				color: 'rgb(186, 108, 164)',
 				weight: 0.5,
@@ -503,7 +503,7 @@ var loadKauai = function () {
 					fillOpacity: 0.9,
 					fillPattern: stripes,
 				},
-			})
+			}).bindTooltip("Kauai County 🏗️ Under Construction").addTo(map)
 		}
 	)
 }
