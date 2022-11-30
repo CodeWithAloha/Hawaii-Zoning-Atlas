@@ -58,7 +58,7 @@ This datasheet is manually populated by people going through the various zoning 
 After the data sheet is populated, it is then exported to a csv where the following steps need to occur:
   * The county tabs are combined together
   * Validation is run on the data
-  * The final csv is given the name "hawaii-zoning-data.csv"
+  * The final csv is given the name `hawaii-zoning-data.csv`
 
 The `hawaii-zoning-data.csv` file should then be placed into the data-pipeline folder.
 
