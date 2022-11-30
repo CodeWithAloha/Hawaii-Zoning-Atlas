@@ -45,6 +45,7 @@ Zoning laws, adopted by thousands of local governments across the country, dicta
 The code can be seen live at [hawaiizoningatlas.com](https://hawaiizoningatlas.com)
 
 The process of moving the data from the starting point (the datasheet) to the final destination (the website) involves a series of processes that we are hoping to automate. 
+
 #### Data Pipeline
 
 The goal of the data pipeline is to help decrease the friction between getting data from the spreadsheet to the final form hosted by the website.
