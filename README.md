@@ -27,7 +27,6 @@ This interactive map shows how outdated zoning laws make it hard to build divers
 Zoning laws, adopted by thousands of local governments across the country, dictate much of what can be built in the United States.  We need to find better ways of helping people understand what zoning codes say, because they have a tremendous impact on our economy, on the environment, and on our society.  A zoning atlas that enables users to visualize the prevalence and nature of regulatory constraints, particularly on housing, can be an important tool to achieve that goal.
 
 
-#### Data Generation
 
 ### Resources
 - [Measuring the Burden of Housing Regulation in Hawaii:](https://uhero.hawaii.edu/wp-content/uploads/2022/04/MeasuringTheBurdenOfHousingRegulationInHawaii.pdf) An April 2022 brief from UHERO, the economic research organization at the University of Hawaii, estimating that Hawaii has the most burdensome regulatory barriers of any state.
