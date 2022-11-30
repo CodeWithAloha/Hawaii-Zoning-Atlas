@@ -110,6 +110,3 @@ sequenceDiagram
         Actions->>Actions: Commit the generated `final.geojson` to the repository
     end
 ```
-
-
-
