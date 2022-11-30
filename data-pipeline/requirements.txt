@@ -1,4 +1,4 @@
-flake8
-pandas
-rtree
-geopandas
+flake8 == 6.0.0
+pandas == 1.4.3
+rtree == 0.9.3
+geopandas == 0.11.1
