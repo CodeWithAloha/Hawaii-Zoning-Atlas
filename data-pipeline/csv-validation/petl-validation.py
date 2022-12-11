@@ -7,6 +7,9 @@ class InvalidStateException(Exception):
 class InvalidJurisdictionException(Exception):
   pass
 
+class InvalidCountyException(Exception):
+  pass
+
 # Validators 
 def validate_state(val):
   if val != "HI":
@@ -15,13 +18,21 @@ def validate_state(val):
 # TODO: Verify jurisdiction based on the file passed in
 # TODO: Account for okinas in Hawaii? 
 def validate_jurisdiction(val):
+  jurisdictions = ["Hawaii", "Kauaʻi", "Maui", "Honolulu"]
+  if val not in jurisdictions:
+    raise InvalidJurisdictionException
+
+# TODO: Verify jurisdiction based on the file passed in
+# TODO: Account for okinas in Hawaii? 
+def validate_county(val):
   counties = ["Hawaii", "Kauaʻi", "Maui", "Honolulu"]
   if val not in counties:
-    raise InvalidJurisdictionException
+    raise InvalidCountyException
 
 constraints = [
     dict(name='state_test', field='State', test=validate_state),
-    dict(name='jurisdiction_test', field='Jurisdiction', test=validate_jurisdiction)
+    dict(name='jurisdiction_test', field='Jurisdiction', test=validate_jurisdiction),
+    dict(name='county_test', field='County', test=validate_county)
 ]
 
 table_full = etl.fromcsv('honolulu.csv')
