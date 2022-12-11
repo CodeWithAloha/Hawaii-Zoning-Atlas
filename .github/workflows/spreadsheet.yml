@@ -75,7 +75,7 @@ jobs:
         with:
           name: hawaii-zoning-data.csv
       - name: Get current date
-        run: echo "NOW::$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+        run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Move Artifact
         run:
           mv hawaii-zoning-data.csv hawaii-zoning-atlas/data/hawaii-zoning-data.csv
