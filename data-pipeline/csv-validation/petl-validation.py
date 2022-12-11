@@ -29,10 +29,17 @@ def validate_county(val):
   if val not in counties:
     raise InvalidCountyException
 
+# TODO: Determine constraints for abbreviated district names
+# TODO: Verify that abbreviated district names can't be only numbers
+def validate_abbr_district_name(val):
+  if not isinstance(val,str) or val.isnumeric():
+    raise ValueError
+
 constraints = [
     dict(name='state_test', field='State', test=validate_state),
     dict(name='jurisdiction_test', field='Jurisdiction', test=validate_jurisdiction),
-    dict(name='county_test', field='County', test=validate_county)
+    dict(name='county_test', field='County', test=validate_county),
+    dict(name='abbr_district_name_test', field='Abbreviated District Name', test=validate_abbr_district_name),
 ]
 
 table_full = etl.fromcsv('honolulu.csv')
