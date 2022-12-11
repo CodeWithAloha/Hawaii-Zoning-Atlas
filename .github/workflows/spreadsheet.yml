@@ -80,7 +80,7 @@ jobs:
         run:
           mv hawaii-zoning-data.csv data/
       - name: Commit to repo
-        run: 
+        run: |
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions"
           git add data/hawaii-zoning-data.csv
