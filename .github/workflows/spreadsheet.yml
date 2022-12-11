@@ -82,6 +82,6 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           message: 'Spreadsheet data update ${{ env.NOW }}'
-          add: 'data/hawaii-zoning-data.csv'
+          add: '*.csv'
           cwd: ${{ github.workspace }}/hawaii-zoning-atlas
 
