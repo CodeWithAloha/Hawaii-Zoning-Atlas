@@ -79,9 +79,10 @@ jobs:
       - name: Move Artifact
         run:
           mv hawaii-zoning-data.csv data/
-      - uses: EndBug/add-and-commit@v9.1.1
-        with:
-          message: 'Spreadsheet data update ${{ env.NOW }}'
-          add: '*.csv'
-          cwd: ${{ github.workspace }}/hawaii-zoning-atlas
-
+      - name: Commit to repo
+        run: 
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/hawaii-zoning-data.csv
+          git commit -m "Spreadsheet data update ${{ env.NOW }}"
+          git push
