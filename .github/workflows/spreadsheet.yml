@@ -78,10 +78,7 @@ jobs:
         run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
       - name: Move Artifact
         run:
-          ls -lah
-          ls -lah ${{ github.workspace }}
-          ls -lah hawaii-zoning-atlas
-          mv hawaii-zoning-data.csv ${{ github.workspace }}/hawaii-zoning-atlas/data/hawaii-zoning-data.csv
+          mv hawaii-zoning-data.csv data/
       - uses: EndBug/add-and-commit@v9
         with:
           message: 'Spreadsheet data update ${{ env.NOW }}'
