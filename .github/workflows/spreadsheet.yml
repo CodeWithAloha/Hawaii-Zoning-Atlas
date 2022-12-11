@@ -80,7 +80,7 @@ jobs:
         run:
           ls -lah
           ls -lah ${{ github.workspace }}
-          ls -lah ${{hawaii-zoning-atlas}}
+          ls -lah hawaii-zoning-atlas
           mv hawaii-zoning-data.csv ${{ github.workspace }}/hawaii-zoning-atlas/data/hawaii-zoning-data.csv
       - uses: EndBug/add-and-commit@v9
         with:
