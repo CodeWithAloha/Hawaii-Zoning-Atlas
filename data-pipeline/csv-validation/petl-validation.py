@@ -42,7 +42,7 @@ constraints = [
     dict(name='abbr_district_name_test', field='Abbreviated District Name', test=validate_abbr_district_name),
 ]
 
-table_full = etl.fromcsv('honolulu.csv')
+table_full = etl.fromcsv('../hawaii-zoning-data.csv')
 table = etl.tail(table_full, table_full.len() - 2)
 problems = etl.validate(table, constraints=constraints, header=headers)
 print(problems.lookall())
