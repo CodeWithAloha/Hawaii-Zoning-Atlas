@@ -360,7 +360,7 @@ var loadTransit = function () {
 				color: 'pink',
 				fillColor: 'pink',
 				opacity: 0.9,
-				fillOpacity: 0.2,
+				fillOpacity: 0.8,
 				interactive: false,
 			})
 		})
