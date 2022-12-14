@@ -81,6 +81,12 @@ jobs:
           mv hawaii-zoning-data.csv data/
       - name: Commit to repo
         run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "there are changes to commit";
+          else
+            exit 0;
+          fi
+
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions"
           git add data/hawaii-zoning-data.csv
