@@ -1,10 +1,6 @@
 name: Run notebook file
 
 on:
-  push:
-    branches:
-    - main
-  pull_request:
   workflow_dispatch: {}
 
 jobs:
@@ -24,6 +20,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: "3.x"
+        cache: 'pip'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip

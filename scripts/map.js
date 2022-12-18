@@ -100,6 +100,7 @@ var loadZones = function (geojson) {
 
 	// Turn on federal/state land by default
 	$('input[name="Overlay"][value="fs"]').prop('checked', true)
+	$('input[name="Overlay"][value="DHHL"]').prop('checked', true)
 
 	// Add selected overlays to the map
 	$('input[name="Overlay"]:checked').each(function (i, el) {
@@ -360,7 +361,7 @@ var loadTransit = function () {
 				color: 'pink',
 				fillColor: 'pink',
 				opacity: 0.9,
-				fillOpacity: 0.2,
+				fillOpacity: 0.8,
 				interactive: false,
 			})
 		})
@@ -507,6 +508,39 @@ var loadKauai = function () {
 	)
 }
 
+var loadDHHL = function () {
+	$.getJSON(
+		'./data/DHHL_Land_Inventory_Detailed_Version.geojson',
+		function (geojson) {
+			var stripes = new L.StripePattern({
+				height: 2,
+				width: 2,
+				weight: 1.5,
+				spaceWeight: 1,
+				angle: -45,
+				color: 'rgb(147, 94, 59)',
+				spaceColor: '#9cb4dc',
+				opacity: 0.9,
+				spaceOpacity: 0.5,
+			})
+			stripes.addTo(map)
+
+
+			overlays['DHHL'] = L.geoJSON(geojson, {
+				interactive: true,
+				stroke: true,
+				color: 'rgb(147, 94, 59)',
+				weight: 0.5,
+				pane: 'overlays',
+				style: {
+					fillOpacity: 0.9,
+					fillPattern: stripes,
+				},
+			}).bindTooltip(" Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022").addTo(map)
+		}
+	)
+}
+
 
 /**
  * This function initializes the map. It should be called as soon as
@@ -586,6 +620,7 @@ var initMap = function () {
 
 	// Add overlays
 	loadKauai()
+	loadDHHL()
 	loadTransit()
 	loadHydro()
 	// loadSewer()

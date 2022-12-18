@@ -65,6 +65,7 @@ jobs:
       - name: Validate Data # Not doing any real validation, just outputting csvclean results to detect any surface problems
         run: |
           csvclean -n hawaii-zoning-data.csv
+
   Validate-CSV:
     needs: Validate-Data
     runs-on: ubuntu-latest
@@ -82,4 +83,30 @@ jobs:
           python ./petl-validation.py
       
     
+  Commit-Data:
+    needs: Validate-Data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: hawaii-zoning-data.csv
+      - name: Get current date
+        run: echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Move Artifact
+        run:
+          mv hawaii-zoning-data.csv data/
+      - name: Commit to repo
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "there are changes to commit";
+          else
+            exit 0;
+          fi
 
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add data/hawaii-zoning-data.csv
+          git commit -m "Spreadsheet data update ${{ env.NOW }}"
+          git push
