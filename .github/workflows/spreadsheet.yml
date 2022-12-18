@@ -88,7 +88,7 @@ jobs:
       
     
   Commit-Data:
-    needs: Validate-Data
+    needs: Validate-CSV
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
