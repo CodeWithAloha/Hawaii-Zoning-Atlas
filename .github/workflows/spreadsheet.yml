@@ -73,11 +73,11 @@ jobs:
         with:
           python-version: '3.10'
       - name: Install petl
-        working-directory: ./data-pipeline/csv-validation
+        working-directory: data-pipeline/csv-validation
         run: |
           pip install petl
       - name: Run Validation
-        working-directory: ./data-pipeline/csv-validation
+        working-directory: data-pipeline/csv-validation
         run: |
           python ./petl-validation.py
       
