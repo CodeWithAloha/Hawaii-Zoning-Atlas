@@ -70,21 +70,21 @@ jobs:
     needs: Validate-Data
     runs-on: ubuntu-latest
     steps:
-      - uses: 'actions/checkout@v3'
+    - uses: 'actions/checkout@v3'
 
-      - name: Set up Python 3
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip'
-      - name: Install petl
-        working-directory: data-pipeline/csv-validation
-        run: |
-          pip install petl
-      - name: Run Validation
-        working-directory: data-pipeline/csv-validation
-        run: |
-          python ./petl-validation.py
+    - name: Set up Python 3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - name: Install petl
+      working-directory: data-pipeline/csv-validation
+      run: |
+        pip install petl
+    - name: Run Validation
+      working-directory: data-pipeline/csv-validation
+      run: |
+        python ./petl-validation.py
       
     
   Commit-Data:
