@@ -740,8 +740,7 @@ var initMap = function () {
 			popover: {
 				title: 'Explore the Overlays',
 				description:
-					'You can toggle between the <strong>Transit and Public Lands \
-          Overlays</strong> to visualize areas within a half mile of passenger rail (<i>HART</i>), as well as land owned by the Federal/State government entities.',
+					'Toggle the checkbox to add or remove your desired overlay. The overlays include Waterways, Federal Lands, State Lands, DHHL Lands, and Transit Stations (Rail). If you would like to see an overlay added, please open an issue on our <a href="https://github.com/CodeforHawaii/ctzoningatlas/issues" target="_blank">GitHub repository</a>.',
 				position: 'right',
 			},
 		},
