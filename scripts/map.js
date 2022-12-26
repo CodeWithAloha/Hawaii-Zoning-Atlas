@@ -740,7 +740,7 @@ var initMap = function () {
 			popover: {
 				title: 'Explore the Overlays',
 				description:
-					'Toggle the checkbox to add or remove your desired overlay. The overlays include Waterways, Federal Lands, State Lands, DHHL Lands, and Transit Stations (Rail). If you would like to see an overlay added, please open an issue on our <a href="https://github.com/CodeforHawaii/ctzoningatlas/issues" target="_blank">GitHub repository</a>.',
+					'Toggle the checkbox to add or remove your desired overlay. The overlays include Waterways, Federal Lands, State Lands, DHHL Lands, and Transit Stations (Rail). If you would like to see an overlay added, please open an issue in our <a href="https://github.com/CodeforHawaii/Hawaii-Zoning-Atlas/issues" target="_blank">GitHub repository</a>.',
 				position: 'right',
 			},
 		},
