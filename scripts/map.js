@@ -740,7 +740,7 @@ var initMap = function () {
 			popover: {
 				title: 'Explore the Overlays',
 				description:
-					'Toggle the checkbox to add or remove your desired overlay. The overlays include Waterways, Federal Lands, State Lands, DHHL Lands, and Transit Stations (Rail). For feature requests or to contribute, please visit the projects <a href="https://github.com/CodeforHawaii/Hawaii-Zoning-Atlas/" target="_blank">GitHub repository</a>.',
+					'Toggle the checkbox to add or remove map overlays. The overlays include Waterways, Federally owned lands, State owned lands, Dept of Hawaiian Homelands owned lands, and Transit Stations (Rail). Hover over each option for more details.',
 				position: 'right',
 			},
 		},
