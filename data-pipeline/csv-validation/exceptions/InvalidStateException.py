@@ -1,2 +1,2 @@
 class InvalidStateException(Exception):
-  pass
+    pass

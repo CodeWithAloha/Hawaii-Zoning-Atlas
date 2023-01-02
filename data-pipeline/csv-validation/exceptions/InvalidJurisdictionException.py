@@ -1,2 +1,2 @@
 class InvalidJurisdictionException(Exception):
-  pass
+    pass

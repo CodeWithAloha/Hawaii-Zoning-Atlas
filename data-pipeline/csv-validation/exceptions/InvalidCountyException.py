@@ -1,2 +1,2 @@
 class InvalidCountyException(Exception):
-  pass
+    pass
