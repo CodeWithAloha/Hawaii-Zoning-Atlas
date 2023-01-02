@@ -130,4 +130,4 @@ problems = etl.validate(table, constraints=constraints, header=headers)
 if problems.len() > 2:
     print(problems.lookall())
     raise Exception("Invalid Data")
-print("Success!")
+print("Success! No data errors found.")
