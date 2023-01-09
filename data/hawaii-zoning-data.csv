@@ -234,7 +234,7 @@ HI,Honolulu,Honolulu,AMX-3,AMX-3 Apartment Mixed Use - High-density,Yes,No,No,Mi
 4 per unit from 4,000 to 4,749 square feet
 1 additional for each 750 square feet over 4,000 square feet",N/A,"Baseline: 40 ft
 
-10 more feet per additional foot of height setback","Less than 10,000 FAR = (.00003 x lot area) + 0.3 10,000 - 40,000 FAR = (.00001 x lot area) + 0.5  Over 40,000  FAR = 0.14",,No,No,0.34,,,,,"60% if < 7,500 sqft
+10 more feet per additional foot of height setback","Less than 10,000 FAR = (.00003 x lot area) + 0.3; 10,000 - 40,000 FAR = (.00001 x lot area) + 0.5;  Over 40,000  FAR = 0.14",,No,No,0.34,,,,,"60% if < 7,500 sqft
 50% if 7,500 - 20,000 sqft
 40% if > 20,000 sqft",None,"2 per unit up to 3,249 square feet
 3 per unit from 3,250 to 3,999 square feet
