@@ -84,7 +84,7 @@ jobs:
     - name: Run Validation
       working-directory: data-pipeline/csv-validation
       run: |
-        python ./petl-validation.py
+        python validation.py
       
     
   Commit-Data:
