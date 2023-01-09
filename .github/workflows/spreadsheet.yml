@@ -80,7 +80,7 @@ jobs:
     - name: Install petl
       working-directory: data-pipeline/csv-validation
       run: |
-        pip install petl
+        pip install -r ./requirements.txt
     - name: Run Validation
       working-directory: data-pipeline/csv-validation
       run: |
