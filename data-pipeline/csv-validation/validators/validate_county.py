@@ -5,4 +5,4 @@ from exceptions import InvalidCountyException
 def validate_county(val):
     counties = ["Hawaii", "Kauaʻi", "Maui", "Honolulu"]
     if val not in counties:
-        raise InvalidCountyException
+        raise InvalidCountyException("Invalid County, county should be: Hawaii, Kauaʻi, Maui, or Honolulu")

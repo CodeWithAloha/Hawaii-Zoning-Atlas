@@ -5,4 +5,4 @@ from exceptions import InvalidJurisdictionException
 def validate_jurisdiction(val):
     jurisdictions = ["Hawaii", "Kauaʻi", "Maui", "Honolulu"]
     if val not in jurisdictions:
-        raise InvalidJurisdictionException
+        raise InvalidJurisdictionException("Invalid valid jurisdiction. Jurisdiction should be: Hawaii, Kauaʻi, Maui, or Honolulu")
