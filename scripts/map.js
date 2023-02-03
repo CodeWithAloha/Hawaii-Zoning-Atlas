@@ -541,7 +541,7 @@ var loadKauai = function () {
 
 var loadDHHL = function () {
 	$.getJSON(
-		'./data/DHHL_Land_Inventory_Detailed_Version.geojson',
+		'./data/dhhl-land.geojson',
 		function (geojson) {
 			var stripes = new L.StripePattern({
 				height: 2,
