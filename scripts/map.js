@@ -423,26 +423,22 @@ var loadHydro = function () {
  * layer to the map
  */
 var loadHouse = function () {
-  $.getJSON(
-    './data/Hawaii_State_House_Districts_2022.geojson',
-    //! Have the minimized house districts, will add separately
-    function (geojson) {
-      overlays['house'] = L.geoJSON(geojson, {
-        interactive: true,
-        stroke: true,
-        color: '#C6DDFF',
-        weight: 1,
-        pane: 'overlays',
-        style: {
-          fillOpacity: 0,
-        },
-      })
+  $.getJSON('./data/house-districts.min.geojson', function (geojson) {
+    overlays['house'] = L.geoJSON(geojson, {
+      interactive: true,
+      stroke: true,
+      color: '#C6DDFF',
+      weight: 1,
+      pane: 'overlays',
+      style: {
+        fillOpacity: 0,
+      },
+    })
 
-      overlays['house'].eachLayer(function (layer) {
-        layer.bindPopup(layer.feature.properties.state_house)
-      })
-    }
-  )
+    overlays['house'].eachLayer(function (layer) {
+      layer.bindPopup(layer.feature.properties.state_house)
+    })
+  })
 }
 
 var loadSenate = function () {
