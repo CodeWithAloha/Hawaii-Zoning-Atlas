@@ -98,7 +98,6 @@ var loadZones = function (geojson) {
     },
   }).addTo(map)
 
-
   // Add selected overlays to the map
   $('input[name="Overlay"]:checked').each(function (i, el) {
     if (overlays[el.value]) {
@@ -572,7 +571,7 @@ var loadKauai = function () {
 }
 
 var loadDHHL = function () {
-  $.getJSON('./data/dhhl-land.geojson', function (geojson) {
+  $.getJSON('./data/dhhl-land-min.geojson', function (geojson) {
     var stripes = new L.StripePattern({
       height: 2,
       width: 2,
