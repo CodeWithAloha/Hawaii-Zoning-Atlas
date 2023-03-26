@@ -6,11 +6,11 @@ var dataLayer // GeoJSON layer with district data
 var overlays = {} // An object to contain overlay layer groups, eg `transit`
 
 var zone2color = {
-  R: "#BB22CA", // primarily residential, satisfied
-  M: "#714674eb", // mixed with residential, satisfied
-  N: "#714674ab", // nonresidential, satisfied
-  NS: "#d0d0d0", // not satisfied
-};
+  R: '#BB22CA', // primarily residential, satisfied
+  M: '#714674eb', // mixed with residential, satisfied
+  N: '#714674ab', // nonresidential, satisfied
+  NS: '#d0d0d0', // not satisfied
+}
 
 // Columns in the original spreadsheet
 var zName = 'Z'
@@ -390,12 +390,12 @@ var loadHydro = function () {
       height: 2,
       width: 2,
       weight: 1,
-      spaceWeight: 1,
+      spaceWeight: 2,
       angle: -45,
       color: '#C6DDFF',
-      spaceColor: '#9cb4dc',
-      opacity: 0.5,
-      spaceOpacity: 0.5,
+      // spaceColor: '#9cb4dc',
+      // opacity: 0.5,
+      // spaceOpacity: 0.5,
     })
     stripes.addTo(map)
 
@@ -403,7 +403,7 @@ var loadHydro = function () {
       interactive: false,
       stroke: true,
       color: '#C6DDFF',
-      weight: 0.5,
+      weight: 0.4,
       pane: 'overlays',
       style: {
         fillOpacity: 1,
@@ -419,16 +419,16 @@ var loadHydro = function () {
  */
 var loadHouse = function () {
   $.getJSON('./data/house-districts.min.geojson', function (geojson) {
-    overlays["house"] = L.geoJSON(geojson, {
+    overlays['house'] = L.geoJSON(geojson, {
       interactive: true,
       stroke: true,
-      color: "#E06AAA",
+      color: '#E06AAA',
       weight: 1,
-      pane: "overlays",
+      pane: 'overlays',
       style: {
         fillOpacity: 0,
       },
-    });
+    })
 
     overlays['house'].eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.state_house)
@@ -438,16 +438,16 @@ var loadHouse = function () {
 
 var loadSenate = function () {
   $.getJSON('./data/senate-districts.min.geojson', function (geojson) {
-    overlays["senate"] = L.geoJSON(geojson, {
+    overlays['senate'] = L.geoJSON(geojson, {
       interactive: true,
       stroke: true,
-      color: "#F8F807",
+      color: '#F8F807',
       weight: 1,
-      pane: "overlays",
+      pane: 'overlays',
       style: {
         fillOpacity: 0,
       },
-    });
+    })
 
     overlays['senate'].eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.state_senate)
@@ -489,8 +489,8 @@ var loadFederal = function () {
       weight: 1,
       spaceWeight: 1,
       angle: 30,
-      color: "#B47A69",
-    });
+      color: '#B47A69',
+    })
 
     stripes.addTo(map)
 
@@ -517,8 +517,8 @@ var loadState = function () {
       weight: 1,
       spaceWeight: 1,
       angle: 30,
-      color: "#FF9C59",
-    });
+      color: '#FF9C59',
+    })
 
     stripes.addTo(map)
 
@@ -578,11 +578,11 @@ var loadDHHL = function () {
       weight: 1.5,
       spaceWeight: 1,
       angle: -45,
-      color: "#FAAE7BC2",
-      spaceColor: "#9cb4dc",
+      color: '#FAAE7BC2',
+      spaceColor: '#9cb4dc',
       opacity: 0.9,
       spaceOpacity: 0.5,
-    });
+    })
     stripes.addTo(map)
 
     overlays['DHHL'] = L.geoJSON(geojson, {
@@ -691,23 +691,29 @@ var initMap = function () {
   loadState()
 
   // Add Esri geocoder
-  // var searchControl = L.esri.Geocoding.geosearch({
-  // 	position: 'topright',
-  // 	allowMultipleResults: false,
-  // 	searchBounds: [
-  // 		[40.98, -73.74],
-  // 		[42.04, -71.78],
-  // 	],
-  // }).addTo(map)
+  var searchControl = L.esri.Geocoding.geosearch({
+    position: 'topright',
+    searchBounds: L.latLngBounds(
+      L.latLng(18.5, -160.5),
+      L.latLng(22.5, -154.5)
+    ),
+    providers: [
+      L.esri.Geocoding.arcgisOnlineProvider({
+        // API Key to be passed to the ArcGIS Online Geocoding Service
+        apiKey:
+          'AAPK541c31891bf048b7be5a010617143263p9OAQ29NDK6FHnKA5F2b69YOXP0TqC7m1H30OCx3hd_2yAWTj95jxvaB6hTyZzUW',
+      }),
+    ],
+  }).addTo(map)
 
-  // var results = L.layerGroup().addTo(map)
+  var results = L.layerGroup().addTo(map)
 
-  // searchControl.on('results', function (data) {
-  // 	results.clearLayers()
-  // 	for (var i = data.results.length - 1; i >= 0; i--) {
-  // 		results.addLayer(L.marker(data.results[i].latlng))
-  // 	}
-  // })
+  searchControl.on('results', function (data) {
+    results.clearLayers()
+    for (var i = data.results.length - 1; i >= 0; i--) {
+      results.addLayer(L.marker(data.results[i].latlng))
+    }
+  })
 
   // Start tour
   var driver = new Driver({
@@ -716,86 +722,85 @@ var initMap = function () {
   })
   // Define the steps for introduction
   driver.defineSteps([
-  
     {
-      element: "#HiZoningAtlas",
+      element: '#HiZoningAtlas',
       popover: {
-        title: "Hawaii Zoning Atlas",
+        title: 'Hawaii Zoning Atlas',
         description:
           "Zoning is the most important local law you've never heard of. Zoning defines where buildings can go, how large they can be, what they can be used for, and more. The current zoning laws prioritize single-family homes on large lots in much of the state, contributing to urban sprawl, traffic congestion, and rising housing costs. Our team read the complete zoning codes for all 4 counties and built this interactive map to show where housing can and can't be built across the state. We hope policymakers and housing advocates can use our data to make housing more affordable and equitable.",
-        position: "right",
+        position: 'right',
       },
     },
     {
-      element: "#TypeOfZoningDistrict",
+      element: '#TypeOfZoningDistrict',
       popover: {
-        title: "What are the Zoning Districts?",
+        title: 'What are the Zoning Districts?',
         description:
-          "We have put the zoning districts in each county into one of three categories: \
+          'We have put the zoning districts in each county into one of three categories: \
           <ul><li><strong>Primarily Residential</strong>: Districts where housing is the main use. They may also include things you might find in residential neighborhoods, like schools and churches.  We included agricultural-residential districts in this category.</li>\
           <li> <strong>Mixed with Residential</strong>: Districts where housing and retail, office, or other commercial uses mix together. They are typically districts around our “main streets” or in areas meant to be developed flexibly.</li>\
-          <li> <strong>Nonresidential</strong>: Districts where housing is not allowed to be an independent use. However, some nonresidential districts allow caretaker units, like an apartment for a night watchman in a factory setting.</li></ul>",
-        position: "right",
+          <li> <strong>Nonresidential</strong>: Districts where housing is not allowed to be an independent use. However, some nonresidential districts allow caretaker units, like an apartment for a night watchman in a factory setting.</li></ul>',
+        position: 'right',
       },
     },
     {
-      element: "#PermittedResidentialUses",
+      element: '#PermittedResidentialUses',
       popover: {
-        title: "Select Permitted Residential Uses",
+        title: 'Select Permitted Residential Uses',
         description:
-          "<p>Select one or more of the <strong>Permitted Residential Uses</strong> from the menu on the left-hand side of this screen. The purple and pink hues on the map will show you what kind of zoning district the chosen residential use appears in.</p>\
-        <p>Explore the specific conditions under which your selected Permitted Residential Use is allowed, like <strong>minimum lot size</strong> requirements, <strong>public hearing</strong> requirements, or restrictions for <strong>elderly housing</strong>.</p>",
-        position: "right",
+          '<p>Select one or more of the <strong>Permitted Residential Uses</strong> from the menu on the left-hand side of this screen. The purple and pink hues on the map will show you what kind of zoning district the chosen residential use appears in.</p>\
+        <p>Explore the specific conditions under which your selected Permitted Residential Use is allowed, like <strong>minimum lot size</strong> requirements, <strong>public hearing</strong> requirements, or restrictions for <strong>elderly housing</strong>.</p>',
+        position: 'right',
       },
       onNext: function () {
         // Make sure calculator displays on top of map in the next step
-        driver.preventMove();
-        $("#activeAreaCalculator").css("z-index", "110000");
-        driver.moveNext();
+        driver.preventMove()
+        $('#activeAreaCalculator').css('z-index', '110000')
+        driver.moveNext()
       },
     },
     {
-      element: "#map",
+      element: '#map',
       popover: {
-        title: "Click the Map to Learn About Your County",
+        title: 'Click the Map to Learn About Your County',
         description:
-          "Click the map for the popup to appear on top of the map. It will tell you what percent of land satisfies your selection criteria, as well as\
-          median household income, the percent of people cost-burdened (spending 30% or more of their income on housing), and what percent of the population identifies as Native Hawaiian.",
-        position: "mid-center",
+          'Click the map for the popup to appear on top of the map. It will tell you what percent of land satisfies your selection criteria, as well as\
+          median household income, the percent of people cost-burdened (spending 30% or more of their income on housing), and what percent of the population identifies as Native Hawaiian.',
+        position: 'mid-center',
       },
       onNext: function () {
-        driver.preventMove();
-        $("#activeAreaCalculator").css("z-index", "999");
-        driver.moveNext();
+        driver.preventMove()
+        $('#activeAreaCalculator').css('z-index', '999')
+        driver.moveNext()
       },
     },
     {
-      element: "#Overlays",
+      element: '#Overlays',
       popover: {
-        title: "Explore the Overlays",
+        title: 'Explore the Overlays',
         description:
-          "Toggle the checkbox to add or remove map overlays. The overlays include Waterways, Federally owned lands, State owned lands, Dept of Hawaiian Homelands owned lands, and Transit Stations (Rail). Hover over each option for more details.",
-        position: "right",
+          'Toggle the checkbox to add or remove map overlays. The overlays include Waterways, Federally owned lands, State owned lands, Dept of Hawaiian Homelands owned lands, and Transit Stations (Rail). Hover over each option for more details.',
+        position: 'right',
       },
     },
     {
-      element: ".leaflet-control-layers-list",
+      element: '.leaflet-control-layers-list',
       popover: {
-        title: "Change the Basemap",
+        title: 'Change the Basemap',
         description:
           'Would you prefer to view the Atlas from a bird\'s eye view? Click "Satellite" at the bottom right in the map.',
-        position: "top-right",
+        position: 'top-right',
       },
     },
     {
-      element: "#ZoneOpacity",
+      element: '#ZoneOpacity',
       popover: {
         title: 'Adjust Zone Opacity',
         description: 'Move the slider to adjust zoning layer transparency.',
         position: 'top',
       },
     },
-  ]);
+  ])
   // Start the introduction
   driver.start()
 }

@@ -19,16 +19,21 @@ body {
   opacity: 0.95;
 }
 
-@media screen and (max-width: 600px) {
+
+/* @media screen and (max-width: 600px) {
   #sidebar {
     display: none;
   }
-}
-
+} */
 
 .leaflet-control-layers .driver-fix-stacking {
   z-index: 999 !important;
 }
+
+.leaflet-control-layers .leaflet-control-layers-list,
+.leaflet-control-layers-expanded .leaflet-control-layers-toggle {
+	display: inline-block
+	}
 
 .square {
   height: 16px;
