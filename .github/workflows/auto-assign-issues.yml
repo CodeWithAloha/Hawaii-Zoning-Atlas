@@ -1,5 +1,6 @@
 name: Auto-assign issue
 on:
+  workflow_dispatch: {}
   issues:
     types: [opened, edited]
   issue_comment:
