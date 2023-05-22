@@ -1,5 +1,5 @@
 ---
-### TODO: Change this to a form using a yml file
+# TODO: Change this to a form using a yml file
 name: Blank Issue
 about: Consistent formatting make Issues concise and easy to navigate
 title: ''
