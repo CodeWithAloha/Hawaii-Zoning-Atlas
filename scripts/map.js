@@ -667,7 +667,7 @@ var initMap = function () {
   $.getJSON('./data/counties.geojson', loadTowns)
 
   // Load main data GeoJSON with zones
-  $.getJSON('./data/05.22.23-final.geojson', loadZones)
+  $.getJSON('./data/final.geojson', loadZones)
 
   // Add hash
   var hash = new L.Hash(map)
