@@ -11,7 +11,7 @@ Then add your fork as a local project:
 git clone https://github.com/CodeWithAloha/Hawaii-Zoning-Atlas
 
 # Using SSH
-git clone git@github.CodeWithAloha/Hawaii-Zoning-Atlas.git
+git clone git@github.com:CodeWithAloha/Hawaii-Zoning-Atlas.git
 ```
 
 > [Which remote URL should be used ?](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories)
