@@ -420,7 +420,7 @@ var loadHydro = function () {
 var loadHouse = function () {
   $.getJSON('./data/house-districts.min.geojson', function (geojson) {
     overlays['house'] = L.geoJSON(geojson, {
-      interactive: true,
+      interactive: false,
       stroke: true,
       color: '#E06AAA',
       weight: 1,
@@ -430,16 +430,18 @@ var loadHouse = function () {
       },
     })
 
-    overlays['house'].eachLayer(function (layer) {
-      layer.bindPopup(layer.feature.properties.state_house)
-    })
+    overlays['house']
+      .eachLayer(function (layer) {
+        layer.bindPopup(layer.feature.properties.state_house)
+      })
+      .addTo(map)
   })
 }
 
 var loadSenate = function () {
   $.getJSON('./data/senate-districts.min.geojson', function (geojson) {
     overlays['senate'] = L.geoJSON(geojson, {
-      interactive: true,
+      interactive: false,
       stroke: true,
       color: '#F8F807',
       weight: 1,
@@ -448,7 +450,6 @@ var loadSenate = function () {
         fillOpacity: 0,
       },
     })
-
     overlays['senate'].eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.state_senate)
     })
