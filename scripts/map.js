@@ -532,8 +532,6 @@ var loadState = function () {
         fillPattern: stripes,
       },
     })
-
-    overlays['state'].addTo(map)
   })
 }
 
