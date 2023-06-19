@@ -434,7 +434,6 @@ var loadHouse = function () {
       .eachLayer(function (layer) {
         layer.bindPopup(layer.feature.properties.state_house)
       })
-      .addTo(map)
   })
 }
 
@@ -491,7 +490,7 @@ var loadFederal = function () {
       spaceWeight: 1,
       angle: 30,
       color: '#B47A69',
-    })
+    });
 
     stripes.addTo(map)
 
@@ -504,8 +503,6 @@ var loadFederal = function () {
         fillPattern: stripes,
       },
     })
-
-    overlays['federal'].addTo(map)
   })
 }
 
@@ -564,8 +561,8 @@ var loadKauai = function () {
         fillPattern: stripes,
       },
     })
-      .bindTooltip('Kauai County 🏗️ Under Construction')
-      .addTo(map)
+    .bindTooltip('Kauai County 🏗️ Under Construction')
+    .addTo(map); // Add to the map right away, since it's not a checkbox
   })
 }
 
@@ -595,10 +592,9 @@ var loadDHHL = function () {
         fillPattern: stripes,
       },
     })
-      .bindTooltip(
-        ' Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022'
-      )
-      .addTo(map)
+    .bindTooltip(
+      ' Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022'
+    )
   })
 }
 
