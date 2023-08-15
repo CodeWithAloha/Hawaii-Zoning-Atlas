@@ -346,11 +346,13 @@ var calculateActiveArea = function () {
  */
 var loadTransit = function () {
   $.getJSON('./data/rail-transit.geojson', (geojson) => {
-    var transitMarkers = geojson.features.map(function (o) {
-      return L.marker(o.geometry.coordinates.reverse())
+    const transitMarkers = geojson.features.map(function (o) {
+      return L.marker(o.geometry.coordinates.reverse()).bindPopup(
+        o.properties.STATION
+      );
     })
 
-    var transitCircles = geojson.features.map(function (o) {
+    const transitCircles = geojson.features.map(function (o) {
       return L.circle(o.geometry.coordinates, {
         radius: 804.5, // half a mile, in meters
         weight: 1,
@@ -359,8 +361,8 @@ var loadTransit = function () {
         opacity: 0.9,
         fillOpacity: 0.8,
         interactive: false,
-      })
-    })
+      });
+    });
 
     // The following was written by Mike A.
     $.getJSON('./data/rail-transit-line.geojson', (geojson) => {
