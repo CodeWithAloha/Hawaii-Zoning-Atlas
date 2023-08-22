@@ -10,6 +10,7 @@ var zone2color = {
   M: '#714674eb', // mixed with residential, satisfied
   N: '#714674ab', // nonresidential, satisfied
   NS: '#d0d0d0', // not satisfied
+  NZ: "#DCDCDB"
 }
 
 // Columns in the original spreadsheet
@@ -28,7 +29,7 @@ var style = function (filters, feature) {
   // This fixes the null areas being blue by default
   if(feature.properties[zType] === null)
   {
-    fillColor = "#DCDCDB"
+    fillColor = zone2color['NZ'];
   }
   return {
     fillOpacity: opacity,
