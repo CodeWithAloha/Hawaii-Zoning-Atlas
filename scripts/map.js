@@ -20,13 +20,20 @@ var zAcres = 'MA' // municipal area
 
 var style = function (filters, feature) {
   var opacity = $('input[name="opacity"]').val() / 100
+  let fillColor = satisfiesFilters(filters, feature)
+  ? zone2color[feature.properties[zType]]
+  : zone2color['NS'];
 
+  // If the feature is "Not Zoned" the properties[zType] will be null
+  // This fixes the null areas being blue by default
+  if(feature.properties[zType] === null)
+  {
+    fillColor = "#DCDCDB"
+  }
   return {
     fillOpacity: opacity,
-    fillColor: satisfiesFilters(filters, feature)
-      ? zone2color[feature.properties[zType]]
-      : zone2color['NS'],
-    weight: 0,
+    fillColor: fillColor,
+    weight: 0
   }
 }
 
@@ -54,6 +61,7 @@ var loadZones = function (geojson) {
 
       // On layer click, select town
       layer.on('click', function () {
+        console.log("PP:", pp)
         var townClicked = pp[zTown]
         townActive = townClicked === townActive ? '' : townClicked
 
