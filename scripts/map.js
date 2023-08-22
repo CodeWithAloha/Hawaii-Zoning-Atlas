@@ -61,7 +61,6 @@ var loadZones = function (geojson) {
 
       // On layer click, select town
       layer.on('click', function () {
-        console.log("PP:", pp)
         var townClicked = pp[zTown]
         townActive = townClicked === townActive ? '' : townClicked
 
