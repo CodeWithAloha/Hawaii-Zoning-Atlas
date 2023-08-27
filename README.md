@@ -38,6 +38,7 @@ Zoning laws, adopted by thousands of local governments across the country, dicta
 
 ### News Articles
 
+- https://www.hawaiifreepress.com/Articles-Main/ID/39670/Hawaii-Zoning-Atlas-Reveals-where-and-how-Zoning-Rules-Limit-Housing-Supply-and-Increase-Costs
 - (Around `~17:00`) https://www.hawaiipublicradio.org/podcast/the-conversation/2023-08-11/the-conversation-climate-change-and-natural-disasters-hawai%CA%BBi-zoning-atlas-helps-with-housing
 - https://www.civilbeat.org/2022/06/this-group-is-trying-to-make-sense-of-hawaiis-regulatory-landscape/
 - https://www.civilbeat.org/2022/09/a-tremendous-need-for-affordable-housing-in-hawaii-leads-to-long-waitlists/

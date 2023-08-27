@@ -10,6 +10,7 @@ var zone2color = {
   M: '#714674eb', // mixed with residential, satisfied
   N: '#714674ab', // nonresidential, satisfied
   NS: '#d0d0d0', // not satisfied
+  NZ: "#DCDCDB"
 }
 
 // Columns in the original spreadsheet
@@ -20,13 +21,20 @@ var zAcres = 'MA' // municipal area
 
 var style = function (filters, feature) {
   var opacity = $('input[name="opacity"]').val() / 100
+  let fillColor = satisfiesFilters(filters, feature)
+  ? zone2color[feature.properties[zType]]
+  : zone2color['NS'];
 
+  // If the feature is "Not Zoned" the properties[zType] will be null
+  // This fixes the null areas being blue by default
+  if(feature.properties[zType] === null)
+  {
+    fillColor = zone2color['NZ'];
+  }
   return {
     fillOpacity: opacity,
-    fillColor: satisfiesFilters(filters, feature)
-      ? zone2color[feature.properties[zType]]
-      : zone2color['NS'],
-    weight: 0,
+    fillColor: fillColor,
+    weight: 0
   }
 }
 
