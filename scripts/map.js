@@ -20,7 +20,8 @@ var zType = 'Ty'
 var zAcres = 'MA' // municipal area
 
 var style = function (filters, feature) {
-  var opacity = $('input[name="opacity"]').val() / 100
+  var opacity = $('input[name="opacity"]').val() / 100;
+
   let fillColor = satisfiesFilters(filters, feature)
   ? zone2color[feature.properties[zType]]
   : zone2color['NS'];
