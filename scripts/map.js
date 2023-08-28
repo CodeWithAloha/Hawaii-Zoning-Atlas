@@ -10,7 +10,7 @@ var zone2color = {
   M: '#714674eb', // mixed with residential, satisfied
   N: '#714674ab', // nonresidential, satisfied
   NS: '#d0d0d0', // not satisfied
-  NZ: "#DCDCDB"
+  NZ: '#DCDCDB',
 }
 
 // Columns in the original spreadsheet
@@ -20,22 +20,21 @@ var zType = 'Ty'
 var zAcres = 'MA' // municipal area
 
 var style = function (filters, feature) {
-  var opacity = $('input[name="opacity"]').val() / 100;
+  var opacity = $('input[name="opacity"]').val() / 100
 
   let fillColor = satisfiesFilters(filters, feature)
-  ? zone2color[feature.properties[zType]]
-  : zone2color['NS'];
+    ? zone2color[feature.properties[zType]]
+    : zone2color['NS']
 
   // If the feature is "Not Zoned" the properties[zType] will be null
   // This fixes the null areas being blue by default
-  if(feature.properties[zType] === null)
-  {
-    fillColor = zone2color['NZ'];
+  if (feature.properties[zType] === null) {
+    fillColor = zone2color['NZ']
   }
   return {
     fillOpacity: opacity,
     fillColor: fillColor,
-    weight: 0
+    weight: 0,
   }
 }
 
@@ -358,7 +357,7 @@ var loadTransit = function () {
     const transitMarkers = geojson.features.map(function (o) {
       return L.marker(o.geometry.coordinates.reverse()).bindPopup(
         o.properties.STATION
-      );
+      )
     })
 
     const transitCircles = geojson.features.map(function (o) {
@@ -370,8 +369,8 @@ var loadTransit = function () {
         opacity: 0.9,
         fillOpacity: 0.8,
         interactive: false,
-      });
-    });
+      })
+    })
 
     // The following was written by Mike A.
     $.getJSON('./data/rail-transit-line.geojson', (geojson) => {
@@ -441,10 +440,9 @@ var loadHouse = function () {
       },
     })
 
-    overlays['house']
-      .eachLayer(function (layer) {
-        layer.bindPopup(layer.feature.properties.state_house)
-      })
+    overlays['house'].eachLayer(function (layer) {
+      layer.bindPopup(layer.feature.properties.state_house)
+    })
   })
 }
 
@@ -501,7 +499,7 @@ var loadFederal = function () {
       spaceWeight: 1,
       angle: 30,
       color: '#B47A69',
-    });
+    })
 
     stripes.addTo(map)
 
@@ -572,13 +570,13 @@ var loadKauai = function () {
         fillPattern: stripes,
       },
     })
-    .bindTooltip('Kauai County 🏗️ Under Construction')
-    .addTo(map); // Add to the map right away, since it's not a checkbox
+      .bindTooltip('Kauai County 🏗️ Under Construction')
+      .addTo(map) // Add to the map right away, since it's not a checkbox
   })
 }
 
 var loadDHHL = function () {
-  $.getJSON('./data/dhhl-land-min.geojson', function (geojson) {
+  $.getJSON('./data/dhhl-land.geojson', function (geojson) {
     var stripes = new L.StripePattern({
       height: 2,
       width: 2,
@@ -602,8 +600,7 @@ var loadDHHL = function () {
         fillOpacity: 0.9,
         fillPattern: stripes,
       },
-    })
-    .bindTooltip(
+    }).bindTooltip(
       ' Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022'
     )
   })
