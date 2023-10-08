@@ -126,7 +126,7 @@ constraints = [
 
 table_full = etl.fromcsv("../hawaii-zoning-data.csv")
 table = etl.tail(table_full, table_full.len() - 2)
-problems = etl.validate(table, constraints=constraints, header=headers)
+problems = etl.validate(table, constraints=constraints, headers=headers)
 if problems.len() > 2:
     print(problems.lookall())
     raise Exception("Invalid Data")
