@@ -5,6 +5,3 @@ def validate_state(val):
     
     if val != "HI":
         raise InvalidStateException("THIS IS TESTING THE STATE VALIDATION REPLACEMENT PLAN")
-    
-    if val == "State":
-        raise InvalidStateException("WHY DOES VALUE SAY STATE HERE")
