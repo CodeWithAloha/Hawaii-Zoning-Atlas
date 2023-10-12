@@ -42,7 +42,7 @@ jobs:
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
-          head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 "$file" | grep -v "^$(head -n 1 "$file")" >> hawaii-zoning-data.csv; done
+          { head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 "$file" | sed '1,1d';done  } > hawaii-zoning-data.csv;
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
