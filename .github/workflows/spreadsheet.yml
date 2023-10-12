@@ -64,8 +64,8 @@ jobs:
           name: hawaii-zoning-data.csv
       - name: Validate Data # Not doing any real validation, just outputting csvclean results to detect any surface problems
         run: |
-          csvclean -N 108 -n hawaii-zoning-data.csv
-        
+          csvclean -n hawaii-zoning-data.csv
+
   Validate-CSV:
     needs: Validate-Data
     runs-on: ubuntu-latest
