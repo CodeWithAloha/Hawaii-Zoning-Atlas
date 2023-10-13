@@ -43,7 +43,7 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           head -n 2 maui.csv > hawaii-zoning-data.csv
-          sed '3s/.*/ /' hawaii-zoning-data.csv > temp_file.csv
+          sed '3s/.*/apples/' hawaii-zoning-data.csv > temp_file.csv
           mv temp_file.csv hawaii-zoning-data.csv
           tail -n +2 -q *.csv >> hawaii-zoning-data.csv
 
