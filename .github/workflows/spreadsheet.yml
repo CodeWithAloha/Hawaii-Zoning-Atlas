@@ -46,8 +46,7 @@ jobs:
           # sed i '2i\apple' hawaii-zoning-data.csv
 
           # head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
-          head -n 1 maui.csv > hawaii-zoning-data.csv
-          awk 'NR==3 {print "apple"} 1' hawaii-zoning-data.csv > hawaii-zoning-data.csv
+          head -n 1 maui.csv >> hawaii-zoning-data.csv && awk 'NR==3 {print "apple"} 1' hawaii-zoning-data.csv >> hawaii-zoning-data.csv
 
           # # Check if  hawaii-zoning-data.csv exists, if not, create it with the header
           # if [ ! -f hawaii-zoning-data.csv ]; then
