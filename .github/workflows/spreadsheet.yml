@@ -39,6 +39,13 @@ jobs:
           KAUAI_SHEET_NAME: 'kauai.csv'
         run: |
           wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$KAUAI_SHEET_ID') }}" -O $KAUAI_SHEET_NAME
+      - name: Add empty line to CSV files
+        run: |
+              for file in *.csv; do
+                if [ -f "$file" ]; then
+                  echo "" >> "$file"
+                fi
+              done
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
@@ -64,17 +71,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: hawaii-zoning-data.csv
-      - name: Add empty line to CSV files
-        run: |
-          for file in *.csv; do
-            if [ -f "$file" ]; then
-              echo "" >> "$file"
-            fi
-          done
       - name: Validate Data # Not doing any real validation, just outputting csvclean results to detect any surface problems
         run: |
           csvclean -n hawaii-zoning-data.csv
-
 
   Validate-CSV:
     needs: Validate-Data
