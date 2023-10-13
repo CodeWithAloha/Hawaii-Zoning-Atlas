@@ -51,14 +51,10 @@ jobs:
         working-directory: ${{ runner.temp }}
         run: |
           # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q *.csv >> hawaii-zoning-data.csv
-            # head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
+            head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
 
-            head -n 1 maui.csv > hawaii-zoning-data.csv
-            for file in *.csv; do
-              if [ -f "$file" ]; then
-                awk 'NR == 2 !~ /State,.*Tooltip/' "$file" | sed '/^$/d' >> hawaii-zoning-data.csv
-              fi
-            done
+            awk '!seen[$0]++'
+            mv  hawaii-zoning-data.csv  hawaii-zoning-data.csv
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
