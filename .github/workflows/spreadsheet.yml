@@ -39,19 +39,27 @@ jobs:
           KAUAI_SHEET_NAME: 'kauai.csv'
         run: |
           wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$KAUAI_SHEET_ID') }}" -O $KAUAI_SHEET_NAME
-      # - name: Add empty line to CSV files
-      #   run: |
-      #     head -n 1 test.csv > main.csv
-      #     for file in *.csv; do
-      #       if [ -f "$file" ]; then
-      #         awk '!seen[$0]++' "$file" | sed '/^header$/d' >> main.csv
-      #       fi
-      #     done
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
           # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q *.csv >> hawaii-zoning-data.csv
-            head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
+            # head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
+
+            head -n 1 maui.csv >  hawaii-zoning-data.csv
+            first_file=true
+
+            for file in *.csv; do
+            if [ -f "$file" ]; then
+              # Check if it's the first file (has the header)
+              if $first_file; then
+                tail -n +2 "$file" >> hawaii-zoning-data.csv  # Include header from the first file
+                first_file=false
+              else
+                tail -n +2 "$file" >> hawaii-zoning-data.csv  # Append data from subsequent files
+              fi
+            fi
+          done
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
