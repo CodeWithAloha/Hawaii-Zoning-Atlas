@@ -45,13 +45,17 @@ jobs:
           # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q *.csv >> hawaii-zoning-data.csv
           # head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
 
-          # Check if  hawaii-zoning-data.csv exists, if not, create it with the header
-          if [ ! -f hawaii-zoning-data.csv ]; then
-            head -n 1  maui.csv > hawaii-zoning-data.csv
-          fi
+          # # Check if  hawaii-zoning-data.csv exists, if not, create it with the header
+          # if [ ! -f hawaii-zoning-data.csv ]; then
+          #   head -n 1  maui.csv > hawaii-zoning-data.csv
+          # fi
       
-          # Append data from other CSV files
-          tail *.csv >> hawaii-zoning-data.csv
+          # # Append data from other CSV files
+          # tail -n +2 -q *.csv >> hawaii-zoning-data.csv
+
+
+          # head -n 1 maui.csv honolulu.csv hawaii.csv kauai.csv > hawaii-zoning-data.csv && tail -n +2 -q *.csv >> hawaii-zoning-data.csv
+
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
