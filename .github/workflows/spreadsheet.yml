@@ -51,7 +51,7 @@ jobs:
           fi
       
           # Append data from other CSV files
-          tail -n +2 -q *.csv >> hawaii-zoning-data.csv
+          tail *.csv >> hawaii-zoning-data.csv
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
