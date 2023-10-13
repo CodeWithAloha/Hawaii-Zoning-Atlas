@@ -56,7 +56,7 @@ jobs:
             head -n 1 maui.csv > hawaii-zoning-data.csv
             for file in *.csv; do
               if [ -f "$file" ]; then
-                awk 'NR == 1 || NR == 2 !~ /State,.*Tooltip/' "$file" | sed '/^$/d' >> hawaii-zoning-data.csv
+                awk 'NR == 2 !~ /State,.*Tooltip/' "$file" | sed '/^$/d' >> hawaii-zoning-data.csv
               fi
             done
 
