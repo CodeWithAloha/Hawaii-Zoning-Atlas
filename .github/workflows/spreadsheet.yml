@@ -67,6 +67,13 @@ jobs:
       - name: Validate Data # Not doing any real validation, just outputting csvclean results to detect any surface problems
         run: |
           csvclean -n hawaii-zoning-data.csv
+      - name: Add empty line to CSV files
+        run: |
+            for file in *.csv; do
+              if [ -f "$file" ]; then
+                echo "" >> "$file"
+              fi
+            done
 
   Validate-CSV:
     needs: Validate-Data
