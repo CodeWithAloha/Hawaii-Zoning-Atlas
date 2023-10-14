@@ -47,9 +47,13 @@ jobs:
 
 
 
-          # This method gets rid of duplication errors since its merging with the unique data from each file, rather than the 2nd lines / header. However, still attached to a line in 3 places
+          # This method gets rid of duplication errors (BUT SKIPS THE 2ND LINE) since its merging with the unique data from each file, rather than the 2nd lines / header. However, still attached to a line in 3 places
                 # head -n 1 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          head -n 2 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
+                
+          #head -n 2 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
+
+          # what if we add a duplicate? Will it delete on its own ? 
+          head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
 
 
