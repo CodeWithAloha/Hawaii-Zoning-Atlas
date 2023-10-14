@@ -42,10 +42,12 @@ jobs:
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
-          head -n 2 maui.csv > hawaii-zoning-data.csv
+          head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
+
+          # head -n 2 maui.csv > hawaii-zoning-data.csv
           # sed '3s/.*/apples/' hawaii-zoning-data.csv > temp_file.csv
           # mv temp_file.csv hawaii-zoning-data.csv
-          tail -n +2 -q *.csv >> hawaii-zoning-data.csv
+          # tail -n +2 -q *.csv >> hawaii-zoning-data.csv
 
           # sed i '2i\apple' hawaii-zoning-data.csv
 
