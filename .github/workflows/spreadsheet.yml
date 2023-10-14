@@ -53,7 +53,8 @@ jobs:
           #head -n 2 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
           # what if we add a duplicate? Will it delete on its own ? 
-          head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
+              # head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
+          head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n +3 file.csv | while read line; do echo "$line"; done
 
 
 
