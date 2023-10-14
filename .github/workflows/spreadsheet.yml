@@ -44,9 +44,6 @@ jobs:
         run: |
           # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
 
-
-
-
           # This method gets rid of duplication errors (BUT SKIPS THE 2ND LINE) since its merging with the unique data from each file, rather than the 2nd lines / header. However, still attached to a line in 3 places
                 # head -n 1 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
                 
@@ -58,10 +55,9 @@ jobs:
           # head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n +3 | sed '3a\\' >> hawaii-zoning-data.csv
 
           # head -n 3 && echo "" maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          head -n 3 maui.csv >  hawaii-zoning-data.csv | echo "" > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
+          # head -n 3 maui.csv >  hawaii-zoning-data.csv | echo "" > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
-
-
+          head -n 3 maui.csv > hawaii-zoning-data.csv && echo "Apples" && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
           # head -n 2 maui.csv > hawaii-zoning-data.csv
           # sed '3s/.*/apples/' hawaii-zoning-data.csv > temp_file.csv
