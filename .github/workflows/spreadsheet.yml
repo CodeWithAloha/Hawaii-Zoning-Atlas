@@ -64,8 +64,8 @@ jobs:
 
 
 
-          sed 's/.$//' honolulu.csv > honolulu.csv
-          head -n 2 maui.csv > hawaii-zoning-data.csv && tail -n+3 -q maui.csv >> hawaii-zoning-data.csv && tail -n+3 -q honolulu.csv >> hawaii-zoning-data.csv
+          sed 's/,$//' honolulu.csv > honolulu_comma_free.csv 
+          head -n 2 maui.csv > hawaii-zoning-data.csv && tail -n+3 -q maui.csv >> hawaii-zoning-data.csv && tail -n+3 -q honolulu_comma_free.csv >> hawaii-zoning-data.csv
 
 
 
