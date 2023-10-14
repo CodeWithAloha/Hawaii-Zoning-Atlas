@@ -63,8 +63,8 @@ jobs:
           # head -n 2 maui.csv > hawaii-zoning-data.csv && echo "apples" >> hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
 
-          sed 's/,$/\n/' maui.csv > maui_comma_free.csv 
-          sed 's/,$/\n/' honolulu.csv > honolulu_comma_free.csv 
+          sed 's/,$/,\n/' maui.csv > maui_comma_free.csv 
+          sed 's/,$/,\n/' honolulu.csv > honolulu_comma_free.csv 
           head -n 2 maui_comma_free.csv  > hawaii-zoning-data.csv && tail -n+3 -q maui_comma_free.csv >> hawaii-zoning-data.csv && tail -n+3 -q honolulu_comma_free.csv >> hawaii-zoning-data.csv
 
 
