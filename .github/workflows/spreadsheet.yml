@@ -69,7 +69,7 @@ jobs:
           sed 's/,$/,\n/' hawaii.csv > hawaii_insert_line.csv 
           sed 's/,$/,\n/' kauai.csv > kauai_insert_line.csv 
 
-
+          # confirmed no redundant headers where they were before
           head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q maui_insert_line.csv honolulu_insert_line.csv hawaii_insert_line.csv kauai_insert_line.csv >> hawaii-zoning-data.csv 
 
 
