@@ -61,7 +61,7 @@ jobs:
           # head -n 3 maui.csv > hawaii-zoning-data.csv && echo "Apples" && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
 
           # head -n 2 maui.csv > hawaii-zoning-data.csv && echo "apples" >> hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          head -n 2 maui.csv > hawaii-zoning-data.csv && echo "apples" >> hawaii-zoning-data.csv && tail -n+3 -q maui.csv && && echo "apples" >> hawaii-zoning-data.csv
+          head -n 2 maui.csv > hawaii-zoning-data.csv && echo "apples" >> hawaii-zoning-data.csv && tail -n+3 -q maui.csv && echo "apples" >> hawaii-zoning-data.csv
 
           # head -n 2 maui.csv > hawaii-zoning-data.csv
           # sed '3s/.*/apples/' hawaii-zoning-data.csv > temp_file.csv
