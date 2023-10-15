@@ -42,63 +42,12 @@ jobs:
       - name: Merge Island CSVs
         working-directory: ${{ runner.temp }}
         run: |
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
-
-          # This method gets rid of duplication errors (BUT SKIPS THE 2ND LINE) since its merging with the unique data from each file, rather than the 2nd lines / header. However, still attached to a line in 3 places
-                # head -n 1 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-                
-          #head -n 2 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-
-          # what if we add a duplicate? Will it delete on its own ? 
-              # head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          # head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n +3 -q *.csv | while read line; do echo "$line"; done
-          # head -n 3 maui.csv >  hawaii-zoning-data.csv && tail -n +3 | sed '3a\\' >> hawaii-zoning-data.csv
-
-          # head -n 3 && echo "" maui.csv >  hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          # head -n 3 maui.csv >  hawaii-zoning-data.csv | echo "" > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-          
-          # ended up adding 1 line double as 3rd line instead of a blank or apples
-          # head -n 3 maui.csv > hawaii-zoning-data.csv && echo "Apples" && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-
-          # head -n 2 maui.csv > hawaii-zoning-data.csv && echo "apples" >> hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv
-
-          # success - need to add the other csvs' now
-          # insert a new line after the last comma of each file, that way each will append on a new line. Usually only the first file merged works (3 / 4 redundant headers even though there are 4 files being merged)
           sed 's/,$/,\n/' maui.csv > maui_insert_line.csv 
           sed 's/,$/,\n/' honolulu.csv > honolulu_insert_line.csv 
           sed 's/,$/,\n/' hawaii.csv > hawaii_insert_line.csv 
           sed 's/,$/,\n/' kauai.csv > kauai_insert_line.csv 
-
-          # confirmed no redundant headers where they were before
           head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q maui_insert_line.csv honolulu_insert_line.csv hawaii_insert_line.csv kauai_insert_line.csv >> hawaii-zoning-data.csv 
 
-
-
-          # head -n 2 maui.csv > hawaii-zoning-data.csv
-          # sed '3s/.*/apples/' hawaii-zoning-data.csv > temp_file.csv
-          # mv temp_file.csv hawaii-zoning-data.csv
-          # tail -n +2 -q *.csv >> hawaii-zoning-data.csv
-
-          # sed i '2i\apple' hawaii-zoning-data.csv
-
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && for file in *.csv; do tail -n +2 -q "$file" >> hawaii-zoning-data.csv; done
-          # head -n 1 maui.csv >> hawaii-zoning-data.csv && awk 'NR==3 {print "apple"} 1' hawaii-zoning-data.csv >> hawaii-zoning-data.csv
-
-          # # Check if  hawaii-zoning-data.csv exists, if not, create it with the header
-          # if [ ! -f hawaii-zoning-data.csv ]; then
-          #   head -n 1  maui.csv > hawaii-zoning-data.csv
-          # fi
-      
-          # # Append data from other CSV files
-          # tail -n +2 -q *.csv >> hawaii-zoning-data.csv
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q honolulu.csv >> hawaii-zoning-data.csv
-          # head -n 1 maui.csv > hawaii-zoning-data.csv
-          # tail -n +2 -q *.csv >> hawaii-zoning-data.csv
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q honolulu.csv >> hawaii-zoning-data.csv
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q hawaii.csv >> hawaii-zoning-data.csv
-          # head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n +2 -q kauai.csv >> hawaii-zoning-data.csv
-
-  
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
