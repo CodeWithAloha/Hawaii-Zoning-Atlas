@@ -53,7 +53,7 @@ jobs:
           rm kauai.csv
           rm maui.csv
 
-          head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv 
+          head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q hawaii_insert_line.csv honolulu_insert_line.csv kauai_insert_line.csv maui_insert_line.csv >> hawaii-zoning-data.csv 
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
