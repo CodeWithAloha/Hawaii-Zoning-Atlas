@@ -43,12 +43,12 @@ jobs:
         working-directory: ${{ runner.temp }} # insert a new line after the last comma of each csv, that way each appended CSV after #Maui will append on a new line
         run: | # also started from 3rd line for only unique data from each file
 
-          sed 's/,$/,\n/' hawaii.csv > hawaii_insert_line.csv 
-          sed 's/,$/,\n/' honolulu.csv > honolulu_insert_line.csv 
-          sed 's/,$/,\n/' kauai.csv > kauai_insert_line.csv 
-          sed 's/,$/,\n/' maui.csv > maui_insert_line.csv 
+          sed 's/,$/,\n/' hawaii.csv > hawaii.csv
+          sed 's/,$/,\n/' honolulu.csv > honolulu.csv 
+          sed 's/,$/,\n/' kauai.csv > kauai.csv 
+          sed 's/,$/,\n/' maui.csv > maui.csv 
 
-          head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q hawaii_insert_line.csv honolulu_insert_line.csv kauai_insert_line.csv maui_insert_line.csv >> hawaii-zoning-data.csv 
+          head -n 2 maui.csv > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv 
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
