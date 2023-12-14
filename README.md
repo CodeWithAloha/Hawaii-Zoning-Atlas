@@ -31,7 +31,7 @@ Zoning laws, adopted by thousands of local governments across the country, dicta
 
 - [National Zoning Atlas](https://www.zoningatlas.org/)
 - [Mercatus Center](https://www.mercatus.org/)
-- [Faith Action Hawaii](https://www.faithactionhawaii.org/)
+- Faith Action Hawaii
 
 ### Resources
 
