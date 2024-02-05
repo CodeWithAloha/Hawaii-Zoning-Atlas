@@ -116,6 +116,8 @@ hr {
 
 #driver-popover-item * {
   font-family: 'Zodiak', serif !important;
+  font-size: 16px !important;
+  letter-spacing: 0.02em;
 }
 
 .bb-dotted {
