@@ -114,6 +114,10 @@ hr {
   max-width: 450px !important;
 }
 
+#driver-popover-item * {
+  font-family: 'Zodiak', serif !important;
+}
+
 .bb-dotted {
   border-bottom: 1px dotted #333;
 }
