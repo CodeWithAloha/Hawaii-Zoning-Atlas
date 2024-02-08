@@ -334,7 +334,7 @@ var calculateActiveArea = function () {
       townActive +
       '</strong> (' +
       totalAcres +
-      ' acres) satisfies your filtering criteria.</p><div style="font-size: 13px"><span class="black-50 dib w-third fl tl" title="Median Household Income">' +
+      ' acres) satisfies your filtering criteria.</p><div style="font-size: 13px; display: flex"><span class="black-50 dib w-third fl tl" title="Median Household Income">' +
       '<span class="material-icons v-top" style="font-size:16px">payments</span> $' +
       demographics[townActive].income.toLocaleString() +
       '<br>HH Income</span><span class="black-50 dib w-third fl tc" title="Black, Indigenous, People of Color">' +
