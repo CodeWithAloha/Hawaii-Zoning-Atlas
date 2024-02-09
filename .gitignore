@@ -94,5 +94,8 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom
 .prettierrc
 .vscode/settings.json
+.dockerignore
