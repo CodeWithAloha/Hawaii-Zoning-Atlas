@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/data-pipeline/district-shapes/*
 
 # Runtime data
 pids
@@ -44,6 +45,10 @@ bower_components
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# IDE - JupyterNotebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
 
 # misc
 .sass-cache
@@ -89,5 +94,8 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Custom
 .prettierrc
 .vscode/settings.json
+.dockerignore

@@ -39,10 +39,22 @@ jobs:
           KAUAI_SHEET_NAME: 'kauai.csv'
         run: |
           wget "${{ format('https://docs.google.com/spreadsheets/d/{0}/export?format=csv&gid={1}', '$SPREADSHEET_ID', '$KAUAI_SHEET_ID') }}" -O $KAUAI_SHEET_NAME
-      - name: Merge Island CSVs
-        working-directory: ${{ runner.temp }}
-        run: |
-          head -n 1 maui.csv > hawaii-zoning-data.csv && tail -n+2 -q *.csv >> hawaii-zoning-data.csv
+      - name: Merge Island CSVs  
+        working-directory: ${{ runner.temp }} # insert a new line after the last comma of each csv, that way each appended CSV after #Maui will append on a new line
+        run: | # also started from 3rd line for only unique data from each file
+
+          sed 's/,$/,\n/' hawaii.csv > hawaii_insert_line.csv 
+          sed 's/,$/,\n/' honolulu.csv > honolulu_insert_line.csv 
+          sed 's/,$/,\n/' kauai.csv > kauai_insert_line.csv 
+          sed 's/,$/,\n/' maui.csv > maui_insert_line.csv 
+
+          rm hawaii.csv
+          rm honolulu.csv
+          rm kauai.csv
+          rm maui.csv
+
+          head -n 2 maui_insert_line.csv > hawaii-zoning-data.csv && tail -n+3 -q *.csv >> hawaii-zoning-data.csv 
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:

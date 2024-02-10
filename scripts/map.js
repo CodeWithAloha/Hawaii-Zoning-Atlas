@@ -10,6 +10,7 @@ var zone2color = {
   M: '#714674eb', // mixed with residential, satisfied
   N: '#714674ab', // nonresidential, satisfied
   NS: '#d0d0d0', // not satisfied
+  NZ: '#DCDCDB',
 }
 
 // Columns in the original spreadsheet
@@ -21,11 +22,18 @@ var zAcres = 'MA' // municipal area
 var style = function (filters, feature) {
   var opacity = $('input[name="opacity"]').val() / 100
 
+  let fillColor = satisfiesFilters(filters, feature)
+    ? zone2color[feature.properties[zType]]
+    : zone2color['NS']
+
+  // If the feature is "Not Zoned" the properties[zType] will be null
+  // This fixes the null areas being blue by default
+  if (feature.properties[zType] === null) {
+    fillColor = zone2color['NZ']
+  }
   return {
     fillOpacity: opacity,
-    fillColor: satisfiesFilters(filters, feature)
-      ? zone2color[feature.properties[zType]]
-      : zone2color['NS'],
+    fillColor: fillColor,
     weight: 0,
   }
 }
@@ -44,8 +52,8 @@ var loadZones = function (geojson) {
 
   dataLayer = L.geoJSON(geojson, {
     attribution:
-      'data by <a href="https://www.codeforhawaii.org/">Kind Volunteers @ Code for Hawaii</a>,\
-      map development by <a href="https://codeforhawaii.org">Code for Hawaii</a>',
+      'data by <a href="https://www.CodeWithAloha.org/">Kind Volunteers @ Code with Aloha</a>,\
+      map development by <a href="https://CodeWithAloha.org">Code with Aloha</a>',
     style: function (feature) {
       return style(filters, feature)
     },
@@ -326,7 +334,7 @@ var calculateActiveArea = function () {
       townActive +
       '</strong> (' +
       totalAcres +
-      ' acres) satisfies your filtering criteria.</p><div style="font-size: 13px"><span class="black-50 dib w-third fl tl" title="Median Household Income">' +
+      ' acres) satisfies your filtering criteria.</p><div style="font-size: 13px; display: flex"><span class="black-50 dib w-third fl tl" title="Median Household Income">' +
       '<span class="material-icons v-top" style="font-size:16px">payments</span> $' +
       demographics[townActive].income.toLocaleString() +
       '<br>HH Income</span><span class="black-50 dib w-third fl tc" title="Black, Indigenous, People of Color">' +
@@ -346,11 +354,13 @@ var calculateActiveArea = function () {
  */
 var loadTransit = function () {
   $.getJSON('./data/rail-transit.geojson', (geojson) => {
-    var transitMarkers = geojson.features.map(function (o) {
-      return L.marker(o.geometry.coordinates.reverse())
+    const transitMarkers = geojson.features.map(function (o) {
+      return L.marker(o.geometry.coordinates.reverse()).bindPopup(
+        o.properties.STATION
+      )
     })
 
-    var transitCircles = geojson.features.map(function (o) {
+    const transitCircles = geojson.features.map(function (o) {
       return L.circle(o.geometry.coordinates, {
         radius: 804.5, // half a mile, in meters
         weight: 1,
@@ -420,7 +430,7 @@ var loadHydro = function () {
 var loadHouse = function () {
   $.getJSON('./data/house-districts.min.geojson', function (geojson) {
     overlays['house'] = L.geoJSON(geojson, {
-      interactive: true,
+      interactive: false,
       stroke: true,
       color: '#E06AAA',
       weight: 1,
@@ -439,7 +449,7 @@ var loadHouse = function () {
 var loadSenate = function () {
   $.getJSON('./data/senate-districts.min.geojson', function (geojson) {
     overlays['senate'] = L.geoJSON(geojson, {
-      interactive: true,
+      interactive: false,
       stroke: true,
       color: '#F8F807',
       weight: 1,
@@ -448,7 +458,6 @@ var loadSenate = function () {
         fillOpacity: 0,
       },
     })
-
     overlays['senate'].eachLayer(function (layer) {
       layer.bindPopup(layer.feature.properties.state_senate)
     })
@@ -503,8 +512,6 @@ var loadFederal = function () {
         fillPattern: stripes,
       },
     })
-
-    overlays['federal'].addTo(map)
   })
 }
 
@@ -531,8 +538,6 @@ var loadState = function () {
         fillPattern: stripes,
       },
     })
-
-    overlays['state'].addTo(map)
   })
 }
 
@@ -566,12 +571,12 @@ var loadKauai = function () {
       },
     })
       .bindTooltip('Kauai County 🏗️ Under Construction')
-      .addTo(map)
+      .addTo(map) // Add to the map right away, since it's not a checkbox
   })
 }
 
 var loadDHHL = function () {
-  $.getJSON('./data/dhhl-land-min.geojson', function (geojson) {
+  $.getJSON('./data/dhhl-land.geojson', function (geojson) {
     var stripes = new L.StripePattern({
       height: 2,
       width: 2,
@@ -595,11 +600,9 @@ var loadDHHL = function () {
         fillOpacity: 0.9,
         fillPattern: stripes,
       },
-    })
-      .bindTooltip(
-        ' Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022'
-      )
-      .addTo(map)
+    }).bindTooltip(
+      ' Lands owned by the State of Hawaii Department of Hawaiian Homelands as of October, 2022'
+    )
   })
 }
 

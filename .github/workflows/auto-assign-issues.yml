@@ -1,0 +1,32 @@
+name: Auto-assign issue
+on:
+  workflow_dispatch: {}
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created, edited]
+jobs:
+  auto_assign:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for "assign me"
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue || context.payload.pull_request;
+            const comment = context.payload.comment;
+            const phrase = "assign me";
+            if ((issue && issue.body.includes(phrase)) || (comment && comment.body.includes(phrase))) {
+              const assignee = comment.user.login;
+              const issue_number = issue.number;
+              const owner = context.repo.owner;
+              const repo = context.repo.repo;
+              const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+              await octokit.issues.addAssignees({
+                owner,
+                repo,
+                issue_number,
+                assignees: [assignee],
+              });
+            }

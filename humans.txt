@@ -13,5 +13,12 @@
     Contact: mavenmia92 [at] gmail.com
     GitHub: @avenmia
 
+    Software Developer: Eric Lam
+    GitHub : @airyclam
+
+    Software Developer: Hubert Liang
+    Contact: hubertl [at] hawaii.edu
+    GitHub: @Hooobot
+
 /* SITE */
-	Last update: 2022/09/20
+	Last update: 2023/07/30

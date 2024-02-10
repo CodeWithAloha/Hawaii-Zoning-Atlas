@@ -22,8 +22,9 @@
 	<script src="scripts/jquery.unserialize.js"></script>
 
 	<!-- Driver.js for first-time tour -->
-	<script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
-	<link rel="stylesheet" href="https://unpkg.com/driver.js/dist/driver.min.css" />
+	<!-- Source: https://github.com/kamranahmedse/driver.js -->
+	<script src="https://unpkg.com/driver.js@0.9.8/dist/driver.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/driver.js@0.9.8/dist/driver.min.css"/>
 
 	<!-- Load Esri Leaflet from CDN -->
 	<script src="https://unpkg.com/esri-leaflet@2.5.2/dist/esri-leaflet.js"></script>
@@ -34,6 +35,9 @@
 
 	<!-- Load Material icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+	<!-- Typeface styling -->
+	<link href="https://api.fontshare.com/v2/css?f[]=red-hat-display@700&f[]=zodiak@400&display=swap" rel="stylesheet">
 
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZTZX623WY7"></script>
@@ -49,7 +53,7 @@
 	<script src="scripts/map.js"></script>
 </head>
 
-<body class="helvetica">
+<body>
 	<div id="map" class="vw-100 vh-100"></div>
 
 	<div class="pa3 shadow-1 dn bg-white" id="activeAreaCalculator"></div>
@@ -505,8 +509,6 @@
           value="senate" />
           Senate Districts
         </label>		
-      </div>
-		</div>
 
 			<div id="ZoneOpacity">
 				<h2 class="f5 mb1 black-40">Zone Opacity</h2>
@@ -519,10 +521,9 @@
 			<a href="http://www.zoningatlas.org/" class="link dim black-50 underline" target="_blank">National Zoning
 				Atlas</a>
 			movement, with support from
-			<a href="https://www.codeforhawaii.org" class="link dim black-50 underline" target="_blank">Code for
-				Hawaii</a>,
-			<a href="https://www.faithactionhawaii.org" class="link dim black-50 underline" target="_blank">Faith
-				Action</a>, and the
+			<a href="https://codewithaloha.org/" class="link dim black-50 underline" target="_blank">Code with
+				Aloha</a>,
+			Faith Action, and the
 			<a href="https://www.mercatus.org" class="link dim black-50 underline" target="_blank">Mercatus Center</a>.
 		</p>
 		</div>
