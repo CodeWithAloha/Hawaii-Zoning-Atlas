@@ -3,10 +3,6 @@
 </div>
 
 <div align="center">
-  <img src="./docs/logos/HZA-front.jpg" />
-</div>
-
-<div align="center">
 	:beach_umbrella: :volcano: :globe_with_meridians:
 </div>
 
