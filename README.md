@@ -1,4 +1,6 @@
-<h1 align="center">Hawaii Zoning Atlas</h1>
+<div align="center">
+  <img src="./docs/logos/HZA-front.jpg" height="400px" />
+</div>
 
 <div align="center">
   <img src="./docs/logos/HZA-front.jpg" />
