@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./docs/logos/HZA-front.jpg" height="400px" />
+  <img src="./docs/logos/HZA.png" />
 </div>
 
 <div align="center">
@@ -22,6 +22,8 @@
     </a>
   </h3>
 </div>
+
+> Note: This project is mainly in maintenance mode, and we are not actively developing new features. We are still maintaining the project and fixing bugs. If you are interested in contributing into issues similar to this project (doing things such as statistical analysis and data visualization), contact Trey Gordner at hawaiizoningatlas@gmail.com.
 
 ### Philosophy
 
