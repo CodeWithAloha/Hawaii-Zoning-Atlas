@@ -24,6 +24,15 @@
       "contributions": [
         "projectManagement"
       ]
+    },
+    {
+      "login": "kenz-bee",
+      "name": "Mckenzie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100083618?v=4",
+      "profile": "https://github.com/kenz-bee",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
