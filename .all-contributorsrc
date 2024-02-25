@@ -53,6 +53,33 @@
       ]
     },
     {
+      "login": "luanyleone",
+      "name": "Luany Leone",
+      "avatar_url": "https://robohash.org/luanyleone",
+      "profile": "https://www.linkedin.com/in/luanyleone/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "heykylo",
+      "name": "Kyle Wong",
+      "avatar_url": "https://robohash.org/heykylo",
+      "profile": "https://www.linkedin.com/in/heykylo/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "ameliadklaborte",
+      "name": "Amelia Laborte",
+      "avatar_url": "https://robohash.org/ameliadklaborte",
+      "profile": "https://www.linkedin.com/in/ameliadklaborte/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
       "login": "locallygoverned",
       "name": "Christian Schmidt",
       "avatar_url": "https://robohash.org/locallygoverned",
