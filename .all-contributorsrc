@@ -34,10 +34,20 @@
         "design"
       ]
     },
+    {
       "login": "kenz-bee",
       "name": "Mckenzie",
       "avatar_url": "https://avatars.githubusercontent.com/u/100083618?v=4",
       "profile": "https://github.com/kenz-bee",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "MichelleShuey",
+      "name": "Michelle Shuey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/120435891?v=4",
+      "profile": "https://github.com/MichelleShuey",
       "contributions": [
         "design"
       ]
