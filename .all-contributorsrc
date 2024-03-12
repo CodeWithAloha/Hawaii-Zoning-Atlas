@@ -1,0 +1,116 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "kcoronel",
+      "name": "Karen ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38144130?v=4",
+      "profile": "https://github.com/kcoronel",
+      "contributions": [
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "ggordn3r",
+      "name": "Trey Gordner",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10144772?v=4",
+      "profile": "http://hawaiizoningatlas.com",
+      "contributions": [
+        "projectManagement"
+      ]
+    },
+    {
+      "login": "jonathanswilcox",
+      "name": "jonathanswilcox",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111539042?v=4",
+      "profile": "https://github.com/jonathanswilcox",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "kenz-bee",
+      "name": "Mckenzie",
+      "avatar_url": "https://avatars.githubusercontent.com/u/100083618?v=4",
+      "profile": "https://github.com/kenz-bee",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "MichelleShuey",
+      "name": "Michelle Shuey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/120435891?v=4",
+      "profile": "https://github.com/MichelleShuey",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "luanyleone",
+      "name": "Luany Leone",
+      "avatar_url": "https://robohash.org/luanyleone",
+      "profile": "https://www.linkedin.com/in/luanyleone/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "heykylo",
+      "name": "Kyle Wong",
+      "avatar_url": "https://robohash.org/heykylo",
+      "profile": "https://www.linkedin.com/in/heykylo/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "ameliadklaborte",
+      "name": "Amelia Laborte",
+      "avatar_url": "https://robohash.org/ameliadklaborte",
+      "profile": "https://www.linkedin.com/in/ameliadklaborte/",
+      "contributions": [
+        "design"
+      ]
+    },
+    {
+      "login": "locallygoverned",
+      "name": "Christian Schmidt",
+      "avatar_url": "https://robohash.org/locallygoverned",
+      "profile": "https://www.linkedin.com/in/locallygoverned/",
+      "contributions": [
+        "research"
+      ]
+    },
+    {
+      "login": "devon-chodzin",
+      "name": "Devon Chodzin",
+      "avatar_url": "https://robohash.org/devon-chodzin",
+      "profile": "https://www.linkedin.com/in/devon-chodzin/",
+      "contributions": [
+        "research"
+      ]
+    },
+    {
+      "login": "james~dingwall",
+      "name": "James Dingwall",
+      "avatar_url": "https://robohash.org/james~dingwall",
+      "profile": "https://www.linkedin.com/in/james~dingwall/",
+      "contributions": [
+        "research"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "Hawaii-Zoning-Atlas",
+  "projectOwner": "CodeWithAloha"
+}
