@@ -1,3 +1,4 @@
+import csv
 import petl as etl
 from validators import validate_abbr_district_name, validate_county
 from validators import validate_jurisdiction, validate_state
@@ -124,10 +125,15 @@ constraints = [
     ),
 ]
 
-table_full = etl.fromcsv("../hawaii-zoning-data.csv", newline='')
-table = etl.tail(table_full, table_full.len() - 2)
-problems = etl.validate(table, constraints=constraints, header=headers)
-if problems.len() > 2:
-    print(problems.lookall())
-    raise Exception("Invalid Data")
-print("Success! No data errors found.")
+with open("../hawaii-zoning-data.csv", newline='') as csvfile:
+    csvfile_reader = csv.reader(csvfile)
+    table_full = []
+    for row in csvfile_reader:
+        table_full.append(row)
+
+    table = etl.tail(table_full, table_full.len() - 2)
+    problems = etl.validate(table, constraints=constraints, header=headers)
+    if problems.len() > 2:
+        print(problems.lookall())
+        raise Exception("Invalid Data")
+    print("Success! No data errors found.")
