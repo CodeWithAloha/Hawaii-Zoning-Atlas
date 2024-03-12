@@ -127,11 +127,12 @@ constraints = [
 
 with open("../hawaii-zoning-data.csv", newline='') as csvfile:
     csvfile_reader = csv.reader(csvfile)
-    table_full = []
+    table_raw = []
     for row in csvfile_reader:
-        table_full.append(row)
+        table_raw.append(row)
 
-    table = etl.tail(table_full, table_full.len() - 2)
+    table_parsed = etl.fromcolumns(table_raw)
+    table = etl.tail(table_parsed, table_parsed.len() - 2)
     problems = etl.validate(table, constraints=constraints, header=headers)
     if problems.len() > 2:
         print(problems.lookall())
