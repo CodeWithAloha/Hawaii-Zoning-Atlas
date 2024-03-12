@@ -31,6 +31,17 @@ This interactive map shows how outdated zoning laws make it hard to build divers
 
 Zoning laws, adopted by thousands of local governments across the country, dictate much of what can be built in the United States.  We need to find better ways of helping people understand what zoning codes say, because they have a tremendous impact on our economy, on the environment, and on our society.  A zoning atlas that enables users to visualize the prevalence and nature of regulatory constraints, particularly on housing, can be an important tool to achieve that goal.
 
+### 🔧 Run a Local Instance for Development 🔧
+
+You can run a local server from the project root. For example:
+
+```python
+python -m http.server
+```
+
+Then you can navigate your browser to `localhost:8000`
+
+
 ### Partners, Supporters, and Sponsors
 
 - [National Zoning Atlas](https://www.zoningatlas.org/)
