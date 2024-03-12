@@ -75,6 +75,18 @@ In the data-pipeline folder there is a "gis" folder that holds the output of pro
 
 #### Data Processing
 
+1. Open the shape file in the GIS software of your choice, [QGIS](https://qgis.org/en/site/) has been used for this. 
+
+2. Verify the following feature columns are added in addition to the existing columns **and match the spreadsheet values**
+    * Jurisdiction
+    * State
+    * FullDistrictName 
+
+    Note:
+    **Do not change the geometry columns**
+
+3. Export the result into a gpkg file (This will get read in by the CombineJurisdictions notebook)
+
 Once the data has been aggregated and in the correct form, it is processed by the CombineJurisdictions Jupyter Notebook. The notebook exports the final.geojson file that is placed in the repository's "data" directory. This is the data the populates the website.
 
 #### Automation Goals
