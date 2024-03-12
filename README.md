@@ -1,4 +1,6 @@
-<h1 align="center">Hawaii Zoning Atlas</h1>
+<div align="center">
+  <img src="./docs/logos/HZA.png" />
+</div>
 
 <div align="center">
 	:beach_umbrella: :volcano: :globe_with_meridians:
@@ -21,9 +23,11 @@
   </h3>
 </div>
 
+> Note: This project is mainly in maintenance mode, and we are not actively developing new features. We are still maintaining the project and fixing bugs. If you are interested in contributing into issues similar to this project (doing things such as statistical analysis and data visualization), contact Trey Gordner at hawaiizoningatlas@gmail.com.
+
 ### Philosophy
 
-This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing.
+This interactive map shows how outdated zoning laws make it hard to build diverse, affordable housing, and the provided Jupyter Notebooks are meant to help gain insights into the data (statistical analysis, data visualization, etc).
 
 Zoning laws, adopted by thousands of local governments across the country, dictate much of what can be built in the United States.  We need to find better ways of helping people understand what zoning codes say, because they have a tremendous impact on our economy, on the environment, and on our society.  A zoning atlas that enables users to visualize the prevalence and nature of regulatory constraints, particularly on housing, can be an important tool to achieve that goal.
 
@@ -31,7 +35,9 @@ Zoning laws, adopted by thousands of local governments across the country, dicta
 
 - [National Zoning Atlas](https://www.zoningatlas.org/)
 - [Mercatus Center](https://www.mercatus.org/)
-- [Faith Action Hawaii](https://www.faithactionhawaii.org/)
+- Faith Action Hawaii
+
+Our data, and many of the other states is also live on the [National Zoning Atlas's Atlas](https://www.zoningatlas.org/atlas).
 
 ### Resources
 
@@ -79,7 +85,7 @@ Once the data has been aggregated and in the correct form, it is processed by th
 
 #### Automation Goals
 
-[GitHub actions](https://github.com/features/actions) is the tool we are using to automate the various parts of the data processing pipeline.
+[GitHub Actions](https://github.com/features/actions) is the tool we are using to automate the various parts of the data processing pipeline.
 
 Different GitHub actions will perform the following tasks:
 
