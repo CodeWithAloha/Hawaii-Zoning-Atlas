@@ -544,36 +544,6 @@ var loadState = function () {
 //* creates a layer for the county of Kaua'i, which at this time we do not have zoning GIS data for
 //* will be removed once zoning shapefiles are available
 
-var loadKauai = function () {
-  $.getJSON('./data/kauai-parcels.geojson', function (geojson) {
-    var stripes = new L.StripePattern({
-      height: 2,
-      width: 2,
-      weight: 1.5,
-      spaceWeight: 1,
-      angle: -45,
-      color: 'rgb(186, 108, 164)',
-      spaceColor: '#9cb4dc',
-      opacity: 0.9,
-      spaceOpacity: 0.5,
-    })
-    stripes.addTo(map)
-
-    overlays['kauai'] = L.geoJSON(geojson, {
-      interactive: true,
-      stroke: false,
-      color: 'rgb(186, 108, 164)',
-      weight: 0.5,
-      pane: 'overlays',
-      style: {
-        fillOpacity: 0.9,
-        fillPattern: stripes,
-      },
-    })
-      .bindTooltip('Kauai County 🏗️ Under Construction')
-      .addTo(map) // Add to the map right away, since it's not a checkbox
-  })
-}
 
 var loadDHHL = function () {
   $.getJSON('./data/dhhl-land.geojson', function (geojson) {
@@ -683,7 +653,7 @@ var initMap = function () {
   map.getPane('overlays').style.zIndex = 501
 
   // Add overlays
-  loadKauai()
+  // loadKauai()
   loadDHHL()
   loadTransit()
   loadHydro()
