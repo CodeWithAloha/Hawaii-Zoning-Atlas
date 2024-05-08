@@ -47,6 +47,8 @@ Our data, and many of the other states is also live on the [National Zoning Atla
 - [Introduction to Hawaii&#39;s Land Classification and Management System:](http://www.oha.org/wp-content/uploads/HRDC-LUTPManual_PRF6_FINAL.pdf) An official 76-page guide for residents written by state agencies and last updated in 2015.
 - [Regulating Paradise:](https://scholarspace.manoa.hawaii.edu/bitstream/10125/24147/Callies%20-%20Regulating%20Paradise.pdf) A full-length 2010 book detailing key aspects of Hawaii land use law, including state and local planning, environmental regulations, and public lands.
 - [ALOHA Homes: An Innovative Solution to Hawaii&#39;s Housing Shortage:](https://www.youtube.com/watch?v=8eTQLZYDUeM) State Sen. Stanley Chang, Chair of the Housing Commitee, has proposed numerous policy innovations aimed to address the housing crisis. ALOHA Homes is his flagship proposal for social housing.
+- [Hawaii Zoning Atlas Reveal - Jan 2024](https://youtu.be/1BLN3iTP4zs)
+- [The Role of Zoning in Hawai'i's Housing Crisis - Feb 15, 2024](https://youtu.be/mkSZ05W9JAk?si=VRJdRg6-pYstxUpn)
 
 ### News Articles
 
